@@ -8,9 +8,6 @@ services:
         networks:
             - nginx-proxy
         restart: always
-        environment:
-            - VIRTUAL_HOST=fanfestmarilia.com.br,www.fanfestmarilia.com.br
-            - VIRTUAL_PORT=2018
     
     mongodbc:
         image: mongo:latest
@@ -28,9 +25,6 @@ services:
             - backendapi
             - nginx-proxy
         restart: always
-        environment:
-            - VIRTUAL_HOST=api.fanfestmarilia.com.br
-            - VIRTUAL_PORT=2020
 
 networks:
     nginx-proxy:

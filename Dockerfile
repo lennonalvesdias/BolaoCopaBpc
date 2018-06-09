@@ -4,7 +4,7 @@ EXPOSE 80
 
 FROM microsoft/aspnetcore-build:2.0 AS build
 COPY . ./
-WORKDIR /Aplicacao/1 - Servicos/FanFest.WebApi/
+WORKDIR /Aplicacao/1 - Servicos/Bolao.WebApi/
 RUN dotnet restore
 RUN dotnet build
 
@@ -14,4 +14,4 @@ RUN dotnet publish -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "FanFest.WebApi.dll"]
+ENTRYPOINT ["dotnet", "Bolao.WebApi.dll"]

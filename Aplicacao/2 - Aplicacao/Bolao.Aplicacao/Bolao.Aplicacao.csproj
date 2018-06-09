@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AutoMapper\EntidadeViewModelMappingProfile.cs~RF1b6fe59d.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../../RecursosCompartilhados/2 - Aplicacao/RecursosCompartilhados.Aplicacao/RecursosCompartilhados.Aplicacao.csproj" />
+    <ProjectReference Include="../../../RecursosCompartilhados/3 - Dominio/RecursosCompartilhados.Dominio/RecursosCompartilhados.Dominio.csproj" />
+    <ProjectReference Include="..\..\3 - Dominio\Bolao.Dominio\Bolao.Dominio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+    <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
