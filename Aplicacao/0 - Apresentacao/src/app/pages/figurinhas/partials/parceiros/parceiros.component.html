@@ -1,0 +1,20 @@
+<section id="sponsors" class="section">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h2 class="section-title wow fadeInUp" data-wow-delay="0s">Quem Somos</h2>
+        <!-- <p class="section-subcontent wow fadeInUp" data-wow-delay="0.2s">Marília Fan Fest .</p> -->
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let apoio of apoiadores">
+        <div class="spnsors-logo wow fadeInUp" data-wow-delay="0.1s">
+          <a href="">
+            <img [src]="'assets/img/sponsors/' + apoio.imagem" alt="">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

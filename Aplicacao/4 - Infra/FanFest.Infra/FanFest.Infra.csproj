@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../2 - Aplicacao/FanFest.Aplicacao/FanFest.Aplicacao.csproj" />
+    <ProjectReference Include="../../3 - Dominio/FanFest.Dominio/FanFest.Dominio.csproj" />
+    <ProjectReference Include="../../4 - Infra/FanFest.Dados/FanFest.Dados.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>

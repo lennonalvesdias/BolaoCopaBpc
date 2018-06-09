@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+    front:
+        build: Aplicacao/0 - Apresentacao
+        ports:
+            - "2018:4200"
+        networks:
+            - nginx-proxy
+        restart: always
+        environment:
+            - VIRTUAL_HOST=fanfestmarilia.com.br,www.fanfestmarilia.com.br
+            - VIRTUAL_PORT=2018
+    
+    mongodbc:
+        image: mongo:latest
+        ports:
+            - "27017:27017"
+        networks: 
+            - backendapi
+        restart: unless-stopped
+    
+    apiserver:
+        build: .
+        ports:
+            - "2020:2020"
+        networks: 
+            - backendapi
+            - nginx-proxy
+        restart: always
+        environment:
+            - VIRTUAL_HOST=api.fanfestmarilia.com.br
+            - VIRTUAL_PORT=2020
+
+networks:
+    nginx-proxy:
+        external: true
+    backendapi:
