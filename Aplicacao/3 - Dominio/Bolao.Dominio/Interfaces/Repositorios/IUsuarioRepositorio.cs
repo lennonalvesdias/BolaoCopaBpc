@@ -6,5 +6,6 @@ namespace Bolao.Dominio.Interfaces.Repositorios
     public interface IUsuarioRepositorio : IBaseRepositorio<Usuario>
     {
          Usuario Login(Usuario usuario);
+        Usuario GetByLogin(string apelido);
     }
 }

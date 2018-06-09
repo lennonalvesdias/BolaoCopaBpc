@@ -10,6 +10,7 @@ namespace Bolao.Aplicacao.AutoMapper
         {
             CreateMap<UsuarioLoginViewModel, Usuario>();
             CreateMap<UsuarioSendViewModel, Usuario>();
+            CreateMap<PalpiteSendViewModel, Palpite>();
         }
     }
 }

@@ -144,7 +144,7 @@ namespace Bolao.WebApi
                 var admin = BolaoContextService.Usuarios.Find(x => x.Apelido == "admin").FirstOrDefault();
                 if (admin == null)
                 {
-                    var administrador = new Usuario("admin", "59778CB56ADACBBDB3C4532A170C197D", 0); // 9JES5O5LJOIbAq3836kjuyL3f474AgTA
+                    var administrador = new Usuario("admin", "59778CB56ADACBBDB3C4532A170C197D", 99); // 9JES5O5LJOIbAq3836kjuyL3f474AgTA
                     BolaoContextService.Usuarios.InsertOne(administrador);
                 }
             }

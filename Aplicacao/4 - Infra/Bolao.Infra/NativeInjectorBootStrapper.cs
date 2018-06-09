@@ -19,14 +19,17 @@ namespace Bolao.Infra
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
 
             services.AddScoped<IUsuarioServicosApp, UsuarioServicosApp>();
+            services.AddScoped<IPalpiteServicosApp, PalpiteServicosApp>();
 
             // Dominio
             services.AddScoped<IUsuarioServicos, UsuarioServicos>();
+            services.AddScoped<IPalpiteServicos, PalpiteServicos>();
 
             // Infra
             services.AddScoped<BolaoContexto>();
 
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddScoped<IPalpiteRepositorio, PalpiteRepositorio>();
         }
     }
 }

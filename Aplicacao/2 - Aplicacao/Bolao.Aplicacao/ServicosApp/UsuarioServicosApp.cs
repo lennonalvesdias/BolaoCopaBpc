@@ -11,7 +11,6 @@ using Bolao.Dominio.Entidades;
 using Bolao.Dominio.Interfaces.Servicos;
 using MediatR;
 using Microsoft.IdentityModel.Tokens;
-using RecursosCompartilhados.Aplicacao.Interfaces.ServicosApp;
 using RecursosCompartilhados.Dominio.Entidades;
 using RecursosCompartilhados.Dominio.Notificacoes;
 
@@ -27,10 +26,10 @@ namespace Bolao.Aplicacao.ServicosApp
         {
             _servicos = servicos;
             _mapper = mapper;
-            _notificacoes = (GerenciadorDeNotificacoes) notificacoes;    
+            _notificacoes = (GerenciadorDeNotificacoes)notificacoes;
         }
 
-        object IUsuarioServicosApp.Login(UsuarioLoginViewModel viewModel, Login login, Token token)
+        public object Login(UsuarioLoginViewModel viewModel, Login login, Token token)
         {
             viewModel.Senha = CalculaHash(viewModel.Senha);
             var usuario = _mapper.Map<Usuario>(viewModel);
@@ -83,42 +82,48 @@ namespace Bolao.Aplicacao.ServicosApp
             }
         }
 
-        void IBaseServicosApp<UsuarioSendViewModel, UsuarioReturnViewModel>.Atualizar(UsuarioSendViewModel viewModel)
+        public void Atualizar(UsuarioSendViewModel viewModel)
         {
             var usuario = _mapper.Map<Usuario>(viewModel);
             _servicos.Atualizar(usuario);
         }
 
-        UsuarioReturnViewModel IBaseServicosApp<UsuarioSendViewModel, UsuarioReturnViewModel>.Buscar(Guid id)
+        public UsuarioReturnViewModel Buscar(Guid id)
         {
             var usuario = _servicos.Buscar(id);
             return _mapper.Map<UsuarioReturnViewModel>(usuario);
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             _servicos.Dispose();
         }
 
-        void IBaseServicosApp<UsuarioSendViewModel, UsuarioReturnViewModel>.Inserir(UsuarioSendViewModel viewModel)
+        public void Inserir(UsuarioSendViewModel viewModel)
         {
+            var usuarioBase = GetByLogin(viewModel.Apelido);
+            if (usuarioBase != null)
+            {
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Já existe um usuário com este apelido."));
+                return;
+            }
             viewModel.Senha = CalculaHash(viewModel.Senha);
             var usuario = _mapper.Map<Usuario>(viewModel);
             _servicos.Inserir(usuario);
         }
 
-        IList<UsuarioReturnViewModel> IBaseServicosApp<UsuarioSendViewModel, UsuarioReturnViewModel>.Listar()
+        public IList<UsuarioReturnViewModel> Listar()
         {
             var usuarios = _servicos.Listar();
             return _mapper.Map<IList<UsuarioReturnViewModel>>(usuarios);
         }
 
-        void IBaseServicosApp<UsuarioSendViewModel, UsuarioReturnViewModel>.Remover(Guid id)
+        public void Remover(Guid id)
         {
             _servicos.Remover(id);
         }
 
-        int IBaseServicosApp<UsuarioSendViewModel, UsuarioReturnViewModel>.Salvar()
+        public int Salvar()
         {
             return _servicos.Salvar();
         }
@@ -141,6 +146,11 @@ namespace Bolao.Aplicacao.ServicosApp
             {
                 return null;
             }
+        }
+
+        private Usuario GetByLogin(string apelido)
+        {
+            return _servicos.GetByLogin(apelido);
         }
     }
 }

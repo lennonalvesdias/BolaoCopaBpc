@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <None Remove="AutoMapper\EntidadeViewModelMappingProfile.cs~RF1b6fe59d.TMP" />
+    <None Remove="ViewModels\PalpiteViewModel.cs~RF1e13ae87.TMP" />
   </ItemGroup>
 
   <ItemGroup>

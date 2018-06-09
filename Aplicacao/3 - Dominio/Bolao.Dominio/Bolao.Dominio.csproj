@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Interfaces\Servicos\IPalpiteServicos.cs~RF1e4f1159.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="../../../RecursosCompartilhados/3 - Dominio/RecursosCompartilhados.Dominio/RecursosCompartilhados.Dominio.csproj" />
   </ItemGroup>
 

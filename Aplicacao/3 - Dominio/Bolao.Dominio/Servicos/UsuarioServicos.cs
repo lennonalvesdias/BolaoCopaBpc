@@ -14,9 +14,14 @@ namespace Bolao.Dominio.Servicos
             _repositorio = repositorio;
         }
 
-        Usuario IUsuarioServicos.Login(Usuario usuario)
+        public Usuario Login(Usuario usuario)
         {
             return _repositorio.Login(usuario);
+        }
+
+        public Usuario GetByLogin(string apelido)
+        {
+            return _repositorio.GetByLogin(apelido);
         }
     }
 }

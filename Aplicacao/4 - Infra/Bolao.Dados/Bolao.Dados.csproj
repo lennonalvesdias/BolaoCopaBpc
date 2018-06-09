@@ -16,10 +16,12 @@
 
   <ItemGroup>
     <PackageReference Include="mongocsharpdriver" Version="2.5.1" />
-    <PackageReference Include="MongoDB.Driver" Version="2.6.1" />
+    <PackageReference Include="MongoDB.Bson" Version="2.5.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.5.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.2" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.5.1" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
   </ItemGroup>
 

@@ -12,5 +12,13 @@ namespace Bolao.Dados.Contexto
                 return _database.GetCollection<Usuario>("Usuarios");
             }
         }
+
+        public IMongoCollection<Palpite> Palpites
+        {
+            get
+            {
+                return _database.GetCollection<Palpite>("Palpites");
+            }
+        }
     }
 }

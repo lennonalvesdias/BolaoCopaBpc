@@ -9,6 +9,7 @@ namespace Bolao.Aplicacao.AutoMapper
         public EntidadeViewModelMappingProfile() 
         {
             CreateMap<Usuario, UsuarioReturnViewModel>();
+            CreateMap<Palpite, PalpiteReturnViewModel>();
         }
     }
 }

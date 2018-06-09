@@ -6,5 +6,6 @@ namespace Bolao.Dominio.Interfaces.Servicos
     public interface IUsuarioServicos : IBaseServicos<Usuario>
     {
          Usuario Login(Usuario usuario);
+        Usuario GetByLogin(string apelido);
     }
 }

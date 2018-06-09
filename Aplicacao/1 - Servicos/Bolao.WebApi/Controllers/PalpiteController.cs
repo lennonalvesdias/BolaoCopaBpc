@@ -1,56 +1,42 @@
-using System;
-using Bolao.Aplicacao.Interfaces.ServicosApp;
+﻿using Bolao.Aplicacao.Interfaces.ServicosApp;
 using Bolao.Aplicacao.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecursosCompartilhados.Dominio.Entidades;
 using RecursosCompartilhados.WebApi.Controllers;
+using System;
 
 namespace Bolao.WebApi.Controllers
 {
-    public class UsuarioController : BaseController
+    public class PalpiteController : BaseController
     {
-        private readonly IUsuarioServicosApp _servicosApp;
+        public readonly IPalpiteServicosApp _servicosApp;
 
-        public UsuarioController(IUsuarioServicosApp servicosApp, INotificationHandler<NotificacaoDeDominio> notificacoes) : base(notificacoes)
+        public PalpiteController(IPalpiteServicosApp servicosApp, INotificationHandler<NotificacaoDeDominio> notificacoes) : base(notificacoes)
         {
             _servicosApp = servicosApp;
         }
 
         [AllowAnonymous]
-        [HttpPost]
-        [Route("usuarios/login")]
-        public object Login(
-            [FromBody]UsuarioLoginViewModel usuario, [FromServices]Login login, [FromServices]Token token)
-        {
-            if (!ModelState.IsValid)
-            {
-                NotificarErros();
-                return Response(usuario);
-            }
-
-            return _servicosApp.Login(usuario, login, token);
-        }
-
         [HttpGet]
-        [Route("usuarios")]
+        [Route("palpites")]
         public IActionResult Get()
         {
             return Response(_servicosApp.Listar());
         }
 
+        [AllowAnonymous]
         [HttpGet]
-        [Route("usuarios/{id:guid}")]
+        [Route("palpites/{id:guid}")]
         public IActionResult Get(Guid id)
         {
             return Response(_servicosApp.Buscar(id));
         }
 
-        [AllowAnonymous]
         [HttpPost]
-        [Route("usuarios")]
-        public IActionResult Post([FromBody]UsuarioSendViewModel vm)
+        [Route("palpites")]
+        public IActionResult Post([FromBody]PalpiteSendViewModel vm)
         {
             if (!ModelState.IsValid)
             {
@@ -64,8 +50,8 @@ namespace Bolao.WebApi.Controllers
         }
 
         [HttpPut]
-        [Route("usuarios")]
-        public IActionResult Put([FromBody]UsuarioSendViewModel vm)
+        [Route("palpites")]
+        public IActionResult Put([FromBody]PalpiteSendViewModel vm)
         {
             if (!ModelState.IsValid)
             {
@@ -79,12 +65,28 @@ namespace Bolao.WebApi.Controllers
         }
 
         [HttpDelete]
-        [Route("usuarios/{id}")]
+        [Route("palpites/{id}")]
         public IActionResult Delete(Guid id)
         {
             _servicosApp.Remover(id);
 
             return Response();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("palpites/usuario/{apelido}")]
+        public IActionResult GetByUser(string apelido)
+        {
+            return Response(_servicosApp.ListarPorUsuario(apelido));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("palpites/jogo/{mandante:int}/{visitante:int}")]
+        public IActionResult Get(int mandante, int visitante)
+        {
+            return Response(_servicosApp.ListarPorJogo(mandante, visitante));
         }
     }
 }
