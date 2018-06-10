@@ -7,5 +7,6 @@ namespace Bolao.Dominio.Interfaces.Repositorios
     {
          Usuario Login(Usuario usuario);
         Usuario GetByLogin(string apelido);
+        Usuario GetByEmail(string email);
     }
 }

@@ -23,5 +23,10 @@ namespace Bolao.Dominio.Servicos
         {
             return _repositorio.GetByLogin(apelido);
         }
+
+        public Usuario GetByEmail(string email)
+        {
+            return _repositorio.GetByEmail(email);
+        }
     }
 }

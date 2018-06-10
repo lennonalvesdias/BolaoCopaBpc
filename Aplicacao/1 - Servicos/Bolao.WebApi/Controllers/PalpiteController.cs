@@ -1,7 +1,6 @@
 ﻿using Bolao.Aplicacao.Interfaces.ServicosApp;
 using Bolao.Aplicacao.ViewModels;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecursosCompartilhados.Dominio.Entidades;
 using RecursosCompartilhados.WebApi.Controllers;
@@ -18,7 +17,6 @@ namespace Bolao.WebApi.Controllers
             _servicosApp = servicosApp;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("palpites")]
         public IActionResult Get()
@@ -26,7 +24,6 @@ namespace Bolao.WebApi.Controllers
             return Response(_servicosApp.Listar());
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("palpites/{id:guid}")]
         public IActionResult Get(Guid id)
@@ -73,15 +70,13 @@ namespace Bolao.WebApi.Controllers
             return Response();
         }
 
-        [AllowAnonymous]
         [HttpGet]
-        [Route("palpites/usuario/{apelido}")]
-        public IActionResult GetByUser(string apelido)
+        [Route("palpites/usuario/{email}")]
+        public IActionResult GetByUser(string email)
         {
-            return Response(_servicosApp.ListarPorUsuario(apelido));
+            return Response(_servicosApp.ListarPorUsuario(email));
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("palpites/jogo/{mandante:int}/{visitante:int}")]
         public IActionResult Get(int mandante, int visitante)

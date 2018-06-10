@@ -107,6 +107,14 @@ namespace Bolao.Aplicacao.ServicosApp
                 _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Já existe um usuário com este apelido."));
                 return;
             }
+
+            usuarioBase = GetByEmail(viewModel.Email);
+            if (usuarioBase != null)
+            {
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Já existe um usuário com este e-mail."));
+                return;
+            }
+
             viewModel.Senha = CalculaHash(viewModel.Senha);
             var usuario = _mapper.Map<Usuario>(viewModel);
             _servicos.Inserir(usuario);
@@ -151,6 +159,11 @@ namespace Bolao.Aplicacao.ServicosApp
         private Usuario GetByLogin(string apelido)
         {
             return _servicos.GetByLogin(apelido);
+        }
+
+        private Usuario GetByEmail(string email)
+        {
+            return _servicos.GetByEmail(email);
         }
     }
 }

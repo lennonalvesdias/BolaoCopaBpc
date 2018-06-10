@@ -45,8 +45,8 @@ namespace Bolao.Aplicacao.ServicosApp
 
         public void Inserir(PalpiteSendViewModel viewModel)
         {
-            var usuario = ExisteUsuario(viewModel.Apelido);
-            if (usuario == null)
+            var usuario = ExisteUsuario(viewModel.Email);
+            if (usuario == false)
             {
                 _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Não existe usuário cadastrado com este apelido."));
                 return;
@@ -60,7 +60,6 @@ namespace Bolao.Aplicacao.ServicosApp
             }
 
             var palpite = _mapper.Map<Palpite>(viewModel);
-            palpite.UsuarioId = usuario;
             _servicos.Inserir(palpite);
         }
 
@@ -80,9 +79,9 @@ namespace Bolao.Aplicacao.ServicosApp
             return _servicos.Salvar();
         }
 
-        public IList<PalpiteReturnViewModel> ListarPorUsuario(string apelido)
+        public IList<PalpiteReturnViewModel> ListarPorUsuario(string email)
         {
-            var palpites = _servicos.ListarPorUsuario(apelido);
+            var palpites = _servicos.ListarPorUsuario(email);
             return _mapper.Map<IList<PalpiteReturnViewModel>>(palpites);
         }
 
@@ -109,17 +108,17 @@ namespace Bolao.Aplicacao.ServicosApp
             }
         }
 
-        private string ExisteUsuario(string apelido)
+        private bool ExisteUsuario(string email)
         {
-            var usuario = _usuarioServicos.GetByLogin(apelido);
+            var usuario = _usuarioServicos.GetByEmail(email);
 
-            if (usuario != null)
+            if (usuario == null)
             {
-                return usuario.Id.ToString();
+                return false;
             }
             else
             {
-                return null;
+                return true;
             }
         }
     }

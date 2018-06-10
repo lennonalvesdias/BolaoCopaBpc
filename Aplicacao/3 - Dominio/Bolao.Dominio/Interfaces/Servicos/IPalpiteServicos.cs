@@ -6,7 +6,7 @@ namespace Bolao.Dominio.Interfaces.Servicos
 {
     public interface IPalpiteServicos : IBaseServicos<Palpite>
     {
-        IList<Palpite> ListarPorUsuario(string apelido);
+        IList<Palpite> ListarPorUsuario(string email);
         Palpite BuscarJogoPorUsuario(Palpite palpite);
         IList<Palpite> ListarPorJogo(Equipe.Selecao timeMandante, Equipe.Selecao timeVisitante);
     }

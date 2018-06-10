@@ -8,21 +8,26 @@ namespace Bolao.Aplicacao.ViewModels
     {
         [MinLength(2, ErrorMessage = "O nome deve conter ao menos 2 letras.")]
         [MaxLength(250, ErrorMessage = "O nome deve conter no máximo 250 letras.")]
+        [Required(ErrorMessage = "O nome é obrigatório.")]
         [DisplayName("Nome")]
         public string Nome { get; set; }
 
         [MinLength(2, ErrorMessage = "O apelido deve conter ao menos 2 letras.")]
         [MaxLength(50, ErrorMessage = "O apelido deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "O apelido é obrigatório.")]
         [DisplayName("Apelido")]
         public string Apelido { get; set; }
 
         [MinLength(2, ErrorMessage = "A senha deve conter ao menos 2 letras.")]
         [MaxLength(50, ErrorMessage = "A senha deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "A senha é obrigatória.")]
         [DisplayName("Senha")]
         public string Senha { get; set; }
 
         [MinLength(2, ErrorMessage = "O e-mail deve conter ao menos 2 letras.")]
         [MaxLength(50, ErrorMessage = "O e-mail deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "O e-mail é obrigatório.")]
+        [RegularExpression(".+\\@bompracredito\\.com\\.br$", ErrorMessage = "O seu e-mail não é Bom pra Crédito.")]
         [DisplayName("E-mail")]
         public string Email { get; set; }
 
@@ -43,11 +48,13 @@ namespace Bolao.Aplicacao.ViewModels
     {
         [MinLength(2, ErrorMessage = "O apelido deve conter ao menos 2 letras.")]
         [MaxLength(50, ErrorMessage = "O apelido deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "O apelido é obrigatório.")]
         [DisplayName("Apelido")]
         public string Apelido { get; set; }
 
         [MinLength(2, ErrorMessage = "A senha deve conter ao menos 2 letras.")]
         [MaxLength(50, ErrorMessage = "A senha deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "A senha é obrigatória.")]
         [DisplayName("Senha")]
         public string Senha { get; set; }
     }

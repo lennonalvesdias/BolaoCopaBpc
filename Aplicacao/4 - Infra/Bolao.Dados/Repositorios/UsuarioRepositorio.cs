@@ -19,5 +19,10 @@ namespace Bolao.Dados.Repositorios
         {
             return bolaoContexto.Usuarios.Find(x => x.Apelido == apelido)?.FirstOrDefault();
         }
+
+        public Usuario GetByEmail(string email)
+        {
+            return bolaoContexto.Usuarios.Find(x => x.Email == email)?.FirstOrDefault();
+        }
     }
 }

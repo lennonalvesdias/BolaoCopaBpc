@@ -7,5 +7,6 @@ namespace Bolao.Dominio.Interfaces.Servicos
     {
          Usuario Login(Usuario usuario);
         Usuario GetByLogin(string apelido);
+        Usuario GetByEmail(string email);
     }
 }

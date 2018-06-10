@@ -47,7 +47,6 @@ namespace Bolao.WebApi.Controllers
             return Response(_servicosApp.Buscar(id));
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("usuarios")]
         public IActionResult Post([FromBody]UsuarioSendViewModel vm)

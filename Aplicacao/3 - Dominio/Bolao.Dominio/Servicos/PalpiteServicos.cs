@@ -15,9 +15,9 @@ namespace Bolao.Dominio.Servicos
             _repositorio = repositorio;
         }
 
-        public IList<Palpite> ListarPorUsuario(string apelido)
+        public IList<Palpite> ListarPorUsuario(string email)
         {
-            return _repositorio.ListarPorUsuario(apelido);
+            return _repositorio.ListarPorUsuario(email);
         }
 
         public Palpite BuscarJogoPorUsuario(Palpite palpite)

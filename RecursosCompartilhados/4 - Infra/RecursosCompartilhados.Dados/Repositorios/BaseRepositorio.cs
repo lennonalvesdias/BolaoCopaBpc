@@ -19,6 +19,7 @@ public abstract class BaseRepositorio<TEntidade> : IBaseRepositorio<TEntidade> w
 
     void IBaseRepositorio<TEntidade>.Atualizar(TEntidade entidade)
     {
+        entidade.DataAtualizacaoRegistro = DateTime.Now;
         BaseCollection.FindOneAndReplace(x => x.Id == entidade.Id, entidade);
     }
 
@@ -30,6 +31,8 @@ public abstract class BaseRepositorio<TEntidade> : IBaseRepositorio<TEntidade> w
     void IBaseRepositorio<TEntidade>.Inserir(TEntidade entidade)
     {
         entidade.Id = Guid.NewGuid();
+        entidade.DataCriacaoRegistro = DateTime.Now;
+        entidade.DataAtualizacaoRegistro = DateTime.Now;
         BaseCollection.InsertOne(entidade);
     }
 
