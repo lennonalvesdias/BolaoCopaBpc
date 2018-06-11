@@ -1,0 +1,29 @@
+private static void EnviarEmail(string email, int random)
+        {
+
+            var corpoEmail = $"Olá, <br/><br/> Você esqueceu sua senha novamente?.<br/>";
+            corpoEmail += $"Entre no Sigeco novamente e clique em 'Já possuí um código? Clique Aqui.' <br/>";
+            corpoEmail += $"Utilize o código <strong>{random}</strong>, e o seu e-mail e boa sorte! <br/>";
+
+            corpoEmail += "Equipe Developers";
+
+            var mensagem = new MailMessage
+            {
+                From = new MailAddress("dakotaparts@shared.mandic.net.br"),
+                To = { new MailAddress(email) },
+                Subject = "Solicitar alteraração de senha do Sigeco!",
+                Body = corpoEmail
+            };
+
+            var client = new SmtpClient
+            {
+                Host = "sharedrelay-cluster.mandic.net.br",
+                Port = 587,
+                UseDefaultCredentials = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential("dakotaparts@shared.mandic.net.br", "mandic123")
+            };
+
+            mensagem.IsBodyHtml = true;
+            client.Send(mensagem);
+        }
