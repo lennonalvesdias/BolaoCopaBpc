@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Bolao.Dominio.Entidades;
+using RecursosCompartilhados.Dominio.Interfaces.Servicos;
 
 namespace Bolao.Dominio.Interfaces.Servicos
 {
-    class IResultadoServicos
+    public interface IResultadoServicos : IBaseServicos<Resultado>
     {
     }
 }

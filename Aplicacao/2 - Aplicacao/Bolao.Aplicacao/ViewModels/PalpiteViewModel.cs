@@ -1,4 +1,5 @@
-﻿using RecursosCompartilhados.Dominio.Entidades;
+﻿using Microsoft.AspNetCore.Mvc;
+using RecursosCompartilhados.Dominio.Entidades;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -17,6 +18,9 @@ namespace Bolao.Aplicacao.ViewModels
         [Required(ErrorMessage = "O placar do mandante é obrigatório.")]
         public int MandantePlacar { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
+        public bool MandanteVitoria { get; set; }
+
         [DisplayName("Time Mandante")]
         [Required(ErrorMessage = "O time mandante é obrigatório.")]
         public int MandanteTime { get; set; }
@@ -28,6 +32,9 @@ namespace Bolao.Aplicacao.ViewModels
         [DisplayName("Time Visitante")]
         [Required(ErrorMessage = "O time visitante é obrigatório.")]
         public int VisitanteTime { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public bool VisitanteVitoria { get; set; }
     }
 
     public class PalpiteReturnViewModel : BaseEntidade

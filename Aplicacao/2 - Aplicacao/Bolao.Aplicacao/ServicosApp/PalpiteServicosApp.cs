@@ -28,6 +28,22 @@ namespace Bolao.Aplicacao.ServicosApp
 
         public void Atualizar(PalpiteSendViewModel viewModel)
         {
+            if (viewModel.MandantePlacar > viewModel.VisitantePlacar)
+            {
+                viewModel.MandanteVitoria = true;
+                viewModel.VisitanteVitoria = false;
+            }
+            else if (viewModel.VisitantePlacar > viewModel.MandantePlacar)
+            {
+                viewModel.MandanteVitoria = false;
+                viewModel.VisitanteVitoria = true;
+            }
+            else
+            {
+                viewModel.MandanteVitoria = false;
+                viewModel.VisitanteVitoria = false;
+            }
+
             var palpite = _mapper.Map<Palpite>(viewModel);
             _servicos.Atualizar(palpite);
         }
@@ -57,6 +73,22 @@ namespace Bolao.Aplicacao.ServicosApp
             {
                 _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "O usuário já tem um palpite para este jogo."));
                 return;
+            }
+
+            if (viewModel.MandantePlacar > viewModel.VisitantePlacar)
+            {
+                viewModel.MandanteVitoria = true;
+                viewModel.VisitanteVitoria = false;
+            }
+            else if (viewModel.VisitantePlacar > viewModel.MandantePlacar)
+            {
+                viewModel.MandanteVitoria = false;
+                viewModel.VisitanteVitoria = true;
+            }
+            else
+            {
+                viewModel.MandanteVitoria = false;
+                viewModel.VisitanteVitoria = false;
             }
 
             var palpite = _mapper.Map<Palpite>(viewModel);

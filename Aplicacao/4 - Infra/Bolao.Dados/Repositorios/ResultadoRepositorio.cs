@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Bolao.Dominio.Entidades;
+using Bolao.Dominio.Interfaces.Repositorios;
 
 namespace Bolao.Dados.Repositorios
 {
-    class ResultadoRepositorio
+    public class ResultadoRepositorio : BaseRepositorio<Resultado>, IResultadoRepositorio
     {
     }
 }
