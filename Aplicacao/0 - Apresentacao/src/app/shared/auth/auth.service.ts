@@ -64,7 +64,7 @@ export class AuthService {
   }
 
   atualizarRota() {
-    this._rota.navigate(['/login']);
+    this._rota.navigate(['/palpites']);
   }
 
   setToken(login: Login) {

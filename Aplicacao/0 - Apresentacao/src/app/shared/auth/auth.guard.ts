@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    this._rota.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    this._rota.navigate(['/login']);
     return false;
   }
 }

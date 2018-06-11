@@ -13,13 +13,16 @@ import { LayoutDefault } from './../layouts/default/default.component';
 
 import { ComponentsModule } from './../shared/components/components.module';
 import { LoginModule } from './login/login.module';
+import { PalpitesModule } from './palpites/palpites.module';
 
 @NgModule({
   imports: [
     CommonModule,
     PagesRoutingModule,
     ComponentsModule,
-    LoginModule
+
+    LoginModule,
+    PalpitesModule
   ],
   declarations: [LayoutDefault],
   providers: [
