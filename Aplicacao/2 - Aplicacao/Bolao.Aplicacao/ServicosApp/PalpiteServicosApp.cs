@@ -28,6 +28,13 @@ namespace Bolao.Aplicacao.ServicosApp
 
         public void Atualizar(PalpiteSendViewModel viewModel)
         {
+            var horarioValido = HorarioValido();
+            if (horarioValido == false)
+            {
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Você não pode mais atualizar seus palpites."));
+                return;
+            }
+
             if (viewModel.MandantePlacar > viewModel.VisitantePlacar)
             {
                 viewModel.MandanteVitoria = true;
@@ -72,6 +79,13 @@ namespace Bolao.Aplicacao.ServicosApp
             if (palpiteValido == false)
             {
                 _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "O usuário já tem um palpite para este jogo."));
+                return;
+            }
+
+            var horarioValido = HorarioValido();
+            if (horarioValido == false)
+            {
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Você não pode mais cadastrar novos palpites."));
                 return;
             }
 
@@ -152,6 +166,16 @@ namespace Bolao.Aplicacao.ServicosApp
             {
                 return true;
             }
+        }
+
+        private bool HorarioValido()
+        {
+            if (DateTime.Now >= new DateTime(2018, 06, 14, 12, 00, 00))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
