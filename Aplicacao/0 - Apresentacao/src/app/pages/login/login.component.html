@@ -1,0 +1,69 @@
+<div class="page-header" filter-color="gray">
+  <div class="page-header-image" style="background-image:url(assets/img/login.jpg)"></div>
+  <div class="container">
+    <div class="col-md-4 content-center">
+      <div class="card card-login card-plain" *ngIf="!senhaPadrao">
+        <form class="form" method="" action="" [formGroup]="_formularioLogin">
+          <div class="header header-primary text-center">
+            <div class="logo-container">
+              <img src="assets/img/bompracreditosite.png" alt="">
+            </div>
+          </div>
+          <div class="content">
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons users_circle-08"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="email@bompracredito.com.br" formControlName="email" [class.invalid]="_formularioLogin.controls['email'].touched && !_formularioLogin.controls['email'].valid"
+                required/>
+            </div>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons ui-1_lock-circle-open"></i>
+              </span>
+              <input type="password" placeholder="senha" class="form-control" formControlName="senha" [class.invalid]="_formularioLogin.controls['senha'].touched && !_formularioLogin.controls['senha'].valid"
+                required/>
+            </div>
+          </div>
+          <div class="footer text-center">
+            <a href="#" class="btn btn-bpc btn-round btn-lg btn-block" (click)="entrar()">{{ loading ? 'AGUARDE' : 'ENTRAR' }}</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="card card-login card-plain" *ngIf="senhaPadrao">
+        <form class="form" method="" action="" [formGroup]="_formularioNovaSenha">
+          <div class="header header-primary text-center">
+            <div class="logo-container">
+              <img src="assets/img/bompracreditosite.png" alt="">
+            </div>
+          </div>
+          <div class="content">
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons users_circle-08"></i>
+              </span>
+              <input type="password" placeholder="nova senha" class="form-control" formControlName="novaSenha" [class.invalid]="_formularioNovaSenha.controls['novaSenha'].touched && !_formularioNovaSenha.controls['novaSenha'].valid"
+                required/>
+            </div>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons ui-1_lock-circle-open"></i>
+              </span>
+              <input type="password" placeholder="confirme sua nova senha" class="form-control" formControlName="novaSenhaConfirmacao"
+                [class.invalid]="_formularioNovaSenha.controls['novaSenhaConfirmacao'].touched && !_formularioNovaSenha.controls['novaSenhaConfirmacao'].valid"
+                required/>
+            </div>
+          </div>
+          <div class="footer text-center">
+            <a href="#" class="btn btn-bpc btn-round btn-lg btn-block" (click)="atualizarSenha()">{{ loading ? 'AGUARDE' : 'ATUALIZAR SENHA' }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+    </div>
+  </footer>
+</div>
