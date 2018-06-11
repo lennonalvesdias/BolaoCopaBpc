@@ -26,14 +26,12 @@ namespace Bolao.Infra
             // Dominio
             services.AddScoped<IUsuarioServicos, UsuarioServicos>();
             services.AddScoped<IPalpiteServicos, PalpiteServicos>();
-            services.AddScoped<IResultadoServicos, ResultadoServicos>();
 
             // Infra
             services.AddScoped<BolaoContexto>();
 
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<IPalpiteRepositorio, PalpiteRepositorio>();
-            services.AddScoped<IResultadoRepositorio, ResultadoRepositorio>();
         }
     }
 }

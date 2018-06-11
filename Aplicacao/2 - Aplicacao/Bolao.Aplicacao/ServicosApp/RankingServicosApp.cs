@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Bolao.Aplicacao.Interfaces.ServicosApp;
 using Bolao.Aplicacao.ViewModels;
+using Bolao.Dominio.Entidades;
 using Bolao.Dominio.Interfaces.Servicos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,37 +11,49 @@ namespace Bolao.Aplicacao.ServicosApp
 {
     public class RankingServicosApp : IRankingServicosApp
     {
+        private readonly IResultadoServicosApp _resultadoServicosApp;
         private readonly IUsuarioServicos _usuarioServicos;
         private readonly IPalpiteServicos _palpiteServicos;
-        private readonly IResultadoServicos _resultadoServicos;
         private readonly IMapper _mapper;
 
-        public RankingServicosApp(IUsuarioServicos usuarioServicos, IPalpiteServicos palpiteServicos, IResultadoServicos resultadoServicos, IMapper mapper)
+        public RankingServicosApp(IResultadoServicosApp resultadoServicosApp, IUsuarioServicos usuarioServicos, IPalpiteServicos palpiteServicos, IMapper mapper)
         {
+            _resultadoServicosApp = resultadoServicosApp;
             _usuarioServicos = usuarioServicos;
             _palpiteServicos = palpiteServicos;
-            _resultadoServicos = resultadoServicos;
             _mapper = mapper;
         }
 
         public List<RankingViewModel> Calcular()
         {
-            var resultados = _resultadoServicos.Listar();
+            var resultados = _resultadoServicosApp.Listar();
 
             var placar = new Dictionary<string, int>();
 
             foreach (var resultado in resultados)
             {
-                var palpitesJogo = _palpiteServicos.ListarPorJogo(resultado.MandanteTime, resultado.VisitanteTime);
+                // 0 = MANDANTE // 1 = VISITANTE // 2 = EMPATE
+                var resultadoJogo = resultado.Result.GoalsHomeTeam > resultado.Result.GoalsAwayTeam ? 0 : resultado.Result.GoalsHomeTeam < resultado.Result.GoalsAwayTeam ? 1 : 2;
+
+                var mandanteTime = resultado.Links.HomeTeam.Href;
+                var lastIndexMandante = mandanteTime.LastIndexOf("/");
+                var mandanteCodigo = mandanteTime.Substring(lastIndexMandante, mandanteTime.Length);
+
+                var visitanteTime = resultado.Links.AwayTeam.Href;
+                var lastIndexVisitante = visitanteTime.LastIndexOf("/");
+                var visitanteCodigo = visitanteTime.Substring(lastIndexVisitante, visitanteTime.Length);
+
+                var palpitesJogo = _palpiteServicos.ListarPorJogo((Equipe.Selecao)Convert.ToInt32(mandanteCodigo), (Equipe.Selecao)Convert.ToInt32(visitanteCodigo));
                 foreach (var palpite in palpitesJogo)
                 {
                     var pontosPalpite = 0;
 
-                    if (palpite.MandantePlacar == resultado.MandantePlacar && palpite.VisitantePlacar == resultado.VisitantePlacar)
+                    if (palpite.MandantePlacar == resultado.Result.GoalsHomeTeam && palpite.VisitantePlacar == resultado.Result.GoalsAwayTeam)
                     {
                         pontosPalpite = 10;
                     }
-                    else if (palpite.MandanteVitoria == resultado.MandanteVitoria && palpite.VisitanteVitoria == resultado.VisitanteVitoria)
+                    else if (palpite.MandanteVitoria == true && resultadoJogo == 0 || palpite.VisitanteVitoria == true && resultadoJogo == 1
+                        || palpite.MandanteVitoria == false && palpite.VisitanteVitoria == false && resultadoJogo == 2)
                     {
                         pontosPalpite = 3;
                     }
@@ -47,7 +61,8 @@ namespace Bolao.Aplicacao.ServicosApp
                     if (!placar.ContainsKey(palpite.Email))
                     {
                         placar.Add(palpite.Email, pontosPalpite);
-                    } else
+                    }
+                    else
                     {
                         placar[palpite.Email] += pontosPalpite;
                     }
@@ -56,7 +71,7 @@ namespace Bolao.Aplicacao.ServicosApp
 
             var rankingGeral = new List<RankingViewModel>();
 
-            foreach(var p in placar)
+            foreach (var p in placar)
             {
                 var palpitesUsuario = _palpiteServicos.ListarPorUsuario(p.Key);
                 var palpitesUsuarioVm = _mapper.Map<IList<PalpiteReturnViewModel>>(palpitesUsuario);

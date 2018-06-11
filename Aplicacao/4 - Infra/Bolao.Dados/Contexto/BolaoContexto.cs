@@ -20,13 +20,5 @@ namespace Bolao.Dados.Contexto
                 return _database.GetCollection<Palpite>("Palpites");
             }
         }
-
-        public IMongoCollection<Resultado> Resultados
-        {
-            get
-            {
-                return _database.GetCollection<Resultado>("Resultados");
-            }
-        }
     }
 }

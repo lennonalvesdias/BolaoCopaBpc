@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Bolao.Aplicacao.Interfaces.ServicosApp
 {
-    public interface IResultadoServicosApp
+    public interface IEquipeServicosApp
     {
-        IList<FixtureViewModel> Listar();
+        IList<TeamViewModel> Listar();
     }
 }

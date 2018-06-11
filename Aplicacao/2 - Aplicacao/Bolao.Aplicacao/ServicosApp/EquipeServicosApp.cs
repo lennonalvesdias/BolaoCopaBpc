@@ -6,18 +6,18 @@ using System.Collections.Generic;
 
 namespace Bolao.Aplicacao.ServicosApp
 {
-    public class ResultadoServicosApp : IResultadoServicosApp
+    public class EquipeServicosApp : IEquipeServicosApp
     {
-        public ResultadoServicosApp()
+        public EquipeServicosApp()
         { }
-
-        public IList<FixtureViewModel> Listar()
+        
+        public IList<TeamViewModel> Listar()
         {
             var apiBase = "https://www.football-data.org";
-            var resourceConfrontos = "/v1/competitions/467/fixtures";
+            var resourceConfrontos = "/v1/competitions/467/teams";
             var post = RestSharpClient.Get(apiBase, resourceConfrontos);
-            var confrontos = JsonConvert.DeserializeObject<ResultadoViewModel>(post.Content);
-            return confrontos.Fixtures;
+            var equipes = JsonConvert.DeserializeObject<TimesViewModel>(post.Content);
+            return equipes.Teams;
         }
     }
 }

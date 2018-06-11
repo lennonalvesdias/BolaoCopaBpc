@@ -7,18 +7,18 @@ using RecursosCompartilhados.WebApi.Controllers;
 
 namespace Bolao.WebApi.Controllers
 {
-    public class ResultadoController : BaseController
+    public class EquipeController : BaseController
     {
-        private readonly IResultadoServicosApp _servicosApp;
+        private readonly IEquipeServicosApp _servicosApp;
 
-        public ResultadoController(IResultadoServicosApp servicosApp, INotificationHandler<NotificacaoDeDominio> notificacoes) : base(notificacoes)
+        public EquipeController(IEquipeServicosApp servicosApp, INotificationHandler<NotificacaoDeDominio> notificacoes) : base(notificacoes)
         {
             _servicosApp = servicosApp;
         }
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("resultados")]
+        [Route("equipes")]
         public IActionResult Get()
         {
             return Response(_servicosApp.Listar());
