@@ -32,6 +32,8 @@ namespace Bolao.Aplicacao.ServicosApp
 
             foreach (var resultado in resultados)
             {
+                if (resultado.Result.GoalsHomeTeam == null || resultado.Result.GoalsAwayTeam == null) continue;
+
                 // 0 = MANDANTE // 1 = VISITANTE // 2 = EMPATE
                 var resultadoJogo = resultado.Result.GoalsHomeTeam > resultado.Result.GoalsAwayTeam ? 0 : resultado.Result.GoalsHomeTeam < resultado.Result.GoalsAwayTeam ? 1 : 2;
 

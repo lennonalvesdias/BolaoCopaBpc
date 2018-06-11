@@ -40,10 +40,10 @@ namespace Bolao.Aplicacao.ViewModels
     public class ResultViewModel
     {
         [JsonProperty("goalsHomeTeam")]
-        public int GoalsHomeTeam { get; set; }
+        public int? GoalsHomeTeam { get; set; }
 
         [JsonProperty("goalsAwayTeam")]
-        public int GoalsAwayTeam { get; set; }
+        public int? GoalsAwayTeam { get; set; }
     }
 
     public class FixtureViewModel
