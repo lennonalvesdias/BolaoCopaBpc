@@ -46,16 +46,39 @@ namespace Bolao.Aplicacao.ViewModels
 
     public class UsuarioLoginViewModel
     {
-        [MinLength(2, ErrorMessage = "O apelido deve conter ao menos 2 letras.")]
-        [MaxLength(50, ErrorMessage = "O apelido deve conter no máximo 50 letras.")]
-        [Required(ErrorMessage = "O apelido é obrigatório.")]
-        [DisplayName("Apelido")]
-        public string Apelido { get; set; }
+        [MinLength(2, ErrorMessage = "O e-mail deve conter ao menos 2 letras.")]
+        [MaxLength(50, ErrorMessage = "O e-mail deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "O e-mail é obrigatório.")]
+        [RegularExpression(".+\\@bompracredito\\.com\\.br$", ErrorMessage = "O seu e-mail não é Bom pra Crédito.")]
+        [DisplayName("Email")]
+        public string Email { get; set; }
 
         [MinLength(2, ErrorMessage = "A senha deve conter ao menos 2 letras.")]
         [MaxLength(50, ErrorMessage = "A senha deve conter no máximo 50 letras.")]
         [Required(ErrorMessage = "A senha é obrigatória.")]
         [DisplayName("Senha")]
         public string Senha { get; set; }
+    }
+
+    public class UsuarioNovaSenhaViewModel
+    {
+        [MinLength(2, ErrorMessage = "O e-mail deve conter ao menos 2 letras.")]
+        [MaxLength(50, ErrorMessage = "O e-mail deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "O e-mail é obrigatório.")]
+        [RegularExpression(".+\\@bompracredito\\.com\\.br$", ErrorMessage = "O seu e-mail não é Bom pra Crédito.")]
+        [DisplayName("Email")]
+        public string Email { get; set; }
+
+        [MinLength(2, ErrorMessage = "A senha deve conter ao menos 2 letras.")]
+        [MaxLength(50, ErrorMessage = "A senha deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "A senha é obrigatória.")]
+        [DisplayName("Nova Senha")]
+        public string NovaSenha { get; set; }
+
+        [MinLength(2, ErrorMessage = "A senha deve conter ao menos 2 letras.")]
+        [MaxLength(50, ErrorMessage = "A senha deve conter no máximo 50 letras.")]
+        [Required(ErrorMessage = "A senha é obrigatória.")]
+        [DisplayName("Confirmacao Nova Senha")]
+        public string NovaSenhaConfirmacao { get; set; }
     }
 }

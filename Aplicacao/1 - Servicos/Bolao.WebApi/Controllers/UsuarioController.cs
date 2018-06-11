@@ -85,5 +85,20 @@ namespace Bolao.WebApi.Controllers
 
             return Response();
         }
+
+        [HttpPost]
+        [Route("usuarios/atualizarSenha")]
+        public IActionResult NovaSenha([FromBody]UsuarioNovaSenhaViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                NotificarErros();
+                return Response(vm);
+            }
+
+            _servicosApp.NovaSenha(vm);
+
+            return Response(vm);
+        }
     }
 }

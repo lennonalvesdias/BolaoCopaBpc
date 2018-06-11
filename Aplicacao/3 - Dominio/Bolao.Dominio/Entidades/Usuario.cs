@@ -4,9 +4,9 @@ namespace Bolao.Dominio.Entidades
 {
     public class Usuario : BaseEntidade
     {
-        public Usuario(string apelido, string senha, int permissao)
+        public Usuario(string email, string senha, int permissao)
         {
-            Apelido = apelido;
+            Email = email;
             Senha = senha;
             Permissao = (Permissao)permissao;
         }

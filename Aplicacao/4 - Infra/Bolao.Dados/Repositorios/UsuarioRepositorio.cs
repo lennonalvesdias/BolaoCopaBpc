@@ -12,7 +12,7 @@ namespace Bolao.Dados.Repositorios
 
         public Usuario Login(Usuario usuario)
         {
-            return bolaoContexto.Usuarios.Find(x => x.Apelido == usuario.Apelido && x.Senha == usuario.Senha)?.FirstOrDefault();
+            return bolaoContexto.Usuarios.Find(x => x.Email == usuario.Email && x.Senha == usuario.Senha)?.FirstOrDefault();
         }
 
         public Usuario GetByLogin(string apelido)

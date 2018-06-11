@@ -40,10 +40,10 @@ namespace Bolao.Aplicacao.ServicosApp
             if (usuarioValido)
             {
                 ClaimsIdentity identity = new ClaimsIdentity(
-                    new GenericIdentity(entrar.Apelido, "Login"),
+                    new GenericIdentity(entrar.Email, "Login"),
                     new[] {
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                        new Claim(JwtRegisteredClaimNames.UniqueName, entrar.Apelido)
+                        new Claim(JwtRegisteredClaimNames.UniqueName, entrar.Email)
                     }
                 );
 
@@ -164,6 +164,34 @@ namespace Bolao.Aplicacao.ServicosApp
         private Usuario GetByEmail(string email)
         {
             return _servicos.GetByEmail(email);
+        }
+
+        public void NovaSenha(UsuarioNovaSenhaViewModel viewModel)
+        {
+            if (viewModel.NovaSenha != viewModel.NovaSenhaConfirmacao)
+            {
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Sua senha e a confirmação devem ser iguais."));
+                return;
+            }
+
+            var novaSenha = CalculaHash(viewModel.NovaSenha);
+
+            var usuarioByEmail = _servicos.GetByEmail(viewModel.Email);
+
+            var usuarioSend = new UsuarioSendViewModel
+            {
+                Apelido = usuarioByEmail.Apelido,
+                DataAtualizacaoRegistro = usuarioByEmail.DataAtualizacaoRegistro,
+                DataCriacaoRegistro = usuarioByEmail.DataCriacaoRegistro,
+                Email = usuarioByEmail.Email,
+                Id = usuarioByEmail.Id,
+                Nome = usuarioByEmail.Nome,
+                SelecaoDoCoracao = (int)usuarioByEmail.SelecaoDoCoracao,
+                Senha = novaSenha
+            };
+
+            var usuario = _mapper.Map<Usuario>(usuarioSend);
+            _servicos.Atualizar(usuario);
         }
     }
 }
