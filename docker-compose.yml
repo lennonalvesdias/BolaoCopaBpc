@@ -4,7 +4,7 @@ services:
     front:
         build: Aplicacao/0 - Apresentacao
         ports:
-            - "2018:4200"
+            - "1994:4200"
         networks:
             - nginx-proxy
         restart: always
