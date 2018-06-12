@@ -39,11 +39,11 @@ namespace Bolao.Aplicacao.ServicosApp
 
                 var mandanteTime = resultado.Links.HomeTeam.Href;
                 var lastIndexMandante = mandanteTime.LastIndexOf("/");
-                var mandanteCodigo = mandanteTime.Substring(lastIndexMandante, mandanteTime.Length);
+                var mandanteCodigo = mandanteTime.Substring(lastIndexMandante + 1, 3);
 
                 var visitanteTime = resultado.Links.AwayTeam.Href;
                 var lastIndexVisitante = visitanteTime.LastIndexOf("/");
-                var visitanteCodigo = visitanteTime.Substring(lastIndexVisitante, visitanteTime.Length);
+                var visitanteCodigo = visitanteTime.Substring(lastIndexVisitante + 1, 3);
 
                 var palpitesJogo = _palpiteServicos.ListarPorJogo((Equipe.Selecao)Convert.ToInt32(mandanteCodigo), (Equipe.Selecao)Convert.ToInt32(visitanteCodigo));
                 foreach (var palpite in palpitesJogo)

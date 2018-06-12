@@ -23,5 +23,13 @@ namespace Bolao.WebApi.Controllers
         {
             return Response(_servicosApp.Listar());
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("equipes/{codigoEquipe:int}")]
+        public IActionResult Get(int codigoEquipe)
+        {
+            return Response(_servicosApp.Buscar(codigoEquipe));
+        }
     }
 }

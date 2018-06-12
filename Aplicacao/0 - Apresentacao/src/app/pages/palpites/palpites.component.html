@@ -1,19 +1,100 @@
 <div class="wrapper">
+
   <div class="page-header page-header-small">
     <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/palpites.jpg');">
     </div>
     <div class="container">
       <div class="content-center">
-        <h1 class="title">Deixe o seu palpite<br/>e corra pro abraço!</h1>
+        <h1 class="title">Deixe o seu palpite
+          <br/>e corra pro abraço!</h1>
       </div>
     </div>
   </div>
+
   <div class="section section-about-us">
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2 class="title">Como palpitar?</h2>
-        <h5 class="description">Se vira, parça!</h5>
+        <h2 class="title">Como funcionam os pontos?</h2>
+        <h5 class="description">10 pontos para cada placar correto. [MÃE DINÁ]
+          <br/> 03 pontos para cada resultado correto (time vencedor / empate). [FOI QUASE]
+          <br/> Os pontos não se acumulam em um mesmo jogo.
+          <br> (Ou seja mané, ou você faz 10 ou você faz 03 ou você só chora)</h5>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="title">Bora palpitar?</h2>
+        <h5 class="description">Arrisque os placares abaixo e clique em 'palpitar'.
+          <br/>Depois é só ficar na torcida daquela mitada!</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <ng-container *ngIf="!resultados || !equipes || !palpites">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">
+            <i class="now-ui-icons loader_refresh spin"></i>
+          </h2>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="resultados && equipes && palpites">
+      <ng-container *ngFor="let resultado of resultados">
+        <form class="form">
+          <div class="row col-sm-9 ml-auto mr-auto" *ngIf="resultado.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
+            <div class="col-sm-1 ml-auto mr-auto">
+              <img [src]="getImagemEquipe(resultado._links.homeTeam.href)">
+            </div>
+
+            <div class="col-sm-2 ml-auto mr-auto text-center">
+              <h5>{{ traduzirNomeEquipe(resultado.homeTeamName) }}</h5>
+            </div>
+
+            <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="far fa-futbol"></i>
+                </span>
+                <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)" 
+                name="{{ getCodigoEquipe(resultado._links.homeTeam.href) }}" placeholder="Placar"
+                  #placarMandante>
+              </div>
+            </div>
+
+            <div class="col-sm-1 ml-auto mr-auto text-center">
+              <h5>x</h5>
+            </div>
+
+            <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+              <div class="input-group">
+                <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), false)"
+                name="{{ getCodigoEquipe(resultado._links.awayTeam.href) }}" placeholder="Placar"
+                  #placarVisitante>
+                <span class="input-group-addon">
+                  <i class="far fa-futbol"></i>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-sm-2 ml-auto mr-auto text-center">
+              <h5> {{ traduzirNomeEquipe(resultado.awayTeamName) }} </h5>
+            </div>
+
+            <div class="col-sm-1 ml-auto mr-auto">
+              <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
+            </div>
+
+            <div class="col-sm-1 ml-auto mr-auto">
+              <button type="button" class="btn btn-bpc btn-icon btn-round" (click)="palpitar(placarMandante, placarVisitante)">
+                <i class="now-ui-icons ui-1_send"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </ng-container>
+    </ng-container>
   </div>
 </div>

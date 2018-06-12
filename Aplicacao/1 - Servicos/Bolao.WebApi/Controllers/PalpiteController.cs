@@ -83,5 +83,20 @@ namespace Bolao.WebApi.Controllers
         {
             return Response(_servicosApp.ListarPorJogo(mandante, visitante));
         }
+
+        [HttpPost]
+        [Route("palpites/palpitar")]
+        public IActionResult PostOrUpdate([FromBody]PalpiteSendViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                NotificarErros();
+                return Response(vm);
+            }
+
+            _servicosApp.CriarOuAtualizarPalpite(vm);
+
+            return Response(vm);
+        }
     }
 }

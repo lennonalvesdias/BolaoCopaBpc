@@ -1,5 +1,5 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CookieService } from 'ng2-cookies';
 
@@ -108,10 +108,15 @@ export class AuthService {
   }
 
   get usuarioEmail() {
-    return AuthService._usuarioEmail;
+    if (AuthService._usuarioEmail) {
+      return AuthService._usuarioEmail;
+    } else {
+      return this._cookie.get('usuarioemail');
+    }
   }
 
   atualizarUsuario(email: string) {
+    this._cookie.set('usuarioemail', email);
     AuthService._usuarioEmail = email;
   }
 

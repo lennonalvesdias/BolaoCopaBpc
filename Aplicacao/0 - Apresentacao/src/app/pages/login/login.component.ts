@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
           swal('Calma lá', 'Precisamos mudar essa senha né?', 'info');
         } else {
           this._senhaPadrao = false;
-          swal('Boa garoto!', 'Autenticado com sucesso.', 'success');
+          swal('Boa parça!', 'Autenticado(a) com sucesso.', 'success');
         }
 
         this._auth.autenticacao(true, data, this._senhaPadrao);
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
         swal('Ops!', 'ERRO: ' + data.message, 'error');
         this._auth.autenticacao(false, null, false);
       } else {
-        swal('Boa garoto!', 'Agora você está pronto soltar seus palpites.', 'success');
+        swal('Boa parça!', 'Agora você está pronto(a) para soltar seus palpites.', 'success');
         this._auth.atualizarRota();
       }
       this._loading = false;

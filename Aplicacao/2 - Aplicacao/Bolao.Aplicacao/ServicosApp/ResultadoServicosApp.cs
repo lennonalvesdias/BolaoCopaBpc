@@ -15,8 +15,9 @@ namespace Bolao.Aplicacao.ServicosApp
         {
             var apiBase = "https://www.football-data.org";
             var resourceConfrontos = "/v1/competitions/467/fixtures";
-            var post = RestSharpClient.Get(apiBase, resourceConfrontos);
-            var confrontos = JsonConvert.DeserializeObject<ResultadoViewModel>(post.Content);
+            var headers = new Dictionary<string, string> { { "X-Auth-Token", "5759e59c5cd44dfdbd72cfc074d8f8f2" } };
+            var getConfrontos = RestSharpClient.Get(apiBase, resourceConfrontos, headers: headers);
+            var confrontos = JsonConvert.DeserializeObject<ResultadoViewModel>(getConfrontos.Content);
             return confrontos.Fixtures;
         }
     }

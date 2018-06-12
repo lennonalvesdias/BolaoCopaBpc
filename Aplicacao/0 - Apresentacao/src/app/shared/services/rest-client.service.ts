@@ -40,6 +40,10 @@ export class RestClientService {
       return config.UrlDebug + segmento;
     }
 
+    if (!segmento) {
+      return this._baseUrl + config.Prefixo;
+    }
+
     return this._baseUrl + config.Prefixo + segmento;
   }
 

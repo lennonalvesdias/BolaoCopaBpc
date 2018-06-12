@@ -8,5 +8,6 @@ namespace Bolao.Aplicacao.Interfaces.ServicosApp
     {
         IList<PalpiteReturnViewModel> ListarPorUsuario(string apelido);
         IList<PalpiteReturnViewModel> ListarPorJogo(int mandante, int visitante);
+        void CriarOuAtualizarPalpite(PalpiteSendViewModel viewModel);
     }
 }

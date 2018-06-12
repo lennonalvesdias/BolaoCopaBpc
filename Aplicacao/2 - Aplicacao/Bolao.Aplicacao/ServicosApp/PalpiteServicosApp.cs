@@ -177,5 +177,52 @@ namespace Bolao.Aplicacao.ServicosApp
 
             return true;
         }
+
+        public void CriarOuAtualizarPalpite(PalpiteSendViewModel viewModel)
+        {
+            var usuario = ExisteUsuario(viewModel.Email);
+            if (usuario == false)
+            {
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Não existe usuário cadastrado com este apelido."));
+                return;
+            }
+
+            var horarioValido = HorarioValido();
+            if (horarioValido == false)
+            {
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Você não pode mais cadastrar novos palpites."));
+                return;
+            }
+
+            if (viewModel.MandantePlacar > viewModel.VisitantePlacar)
+            {
+                viewModel.MandanteVitoria = true;
+                viewModel.VisitanteVitoria = false;
+            }
+            else if (viewModel.VisitantePlacar > viewModel.MandantePlacar)
+            {
+                viewModel.MandanteVitoria = false;
+                viewModel.VisitanteVitoria = true;
+            }
+            else
+            {
+                viewModel.MandanteVitoria = false;
+                viewModel.VisitanteVitoria = false;
+            }
+
+            var palpite = _mapper.Map<Palpite>(viewModel);
+            var temPalpite = _servicos.BuscarJogoPorUsuario(palpite);
+
+            if (temPalpite == null)
+            {
+                _servicos.Inserir(palpite);
+            }
+            else
+            {
+                viewModel.Id = temPalpite.Id;
+                var palpiteAtualizado = _mapper.Map<Palpite>(viewModel);
+                _servicos.Atualizar(palpiteAtualizado);
+            }
+        }
     }
 }
