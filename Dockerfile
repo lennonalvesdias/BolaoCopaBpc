@@ -1,8 +1,8 @@
-FROM microsoft/aspnetcore:2.0 AS base
+FROM microsoft/aspnetcore:latest AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM microsoft/aspnetcore-build:latest AS build
 COPY . ./
 WORKDIR /Aplicacao/1 - Servicos/Bolao.WebApi/
 RUN dotnet restore
