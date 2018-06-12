@@ -35,7 +35,7 @@ export class AuthService {
       this.usuarioNaoAutenticado();
     }
 
-    if (this._cookie.check('AccessToken')) {
+    if (this._cookie.check('accessToken')) {
       AuthService._autenticado = true;
     }
   }

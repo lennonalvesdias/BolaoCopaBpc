@@ -43,10 +43,9 @@ export class LoginComponent implements OnInit {
     this._auth.setToken(this._formularioLogin.value).subscribe(data => {
       if (data.authenticated === false) {
         swal('Ops!', 'ERRO: ' + data.message, 'error');
-        this._auth.autenticacao(true, data, this._senhaPadrao);
+        this._auth.autenticacao(false, data, false);
       } else {
         this._auth.atualizarUsuario(this._formularioLogin.value['email']);
-        this._auth.autenticacao(true, data, this._senhaPadrao);
 
         if (this._formularioLogin.value['senha'] === 'bpc@2018') {
           this._senhaPadrao = true;
@@ -55,6 +54,8 @@ export class LoginComponent implements OnInit {
           this._senhaPadrao = false;
           swal('Boa garoto!', 'Autenticado com sucesso.', 'success');
         }
+
+        this._auth.autenticacao(true, data, this._senhaPadrao);
       }
       this._loading = false;
     }, error => {

@@ -15,7 +15,7 @@ namespace Bolao.WebApi
             WebHost.CreateDefaultBuilder(args)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
-                .UseUrls("http://*:2018")
+                .UseUrls("http://*:58202")
                 .Build();
     }
 }
