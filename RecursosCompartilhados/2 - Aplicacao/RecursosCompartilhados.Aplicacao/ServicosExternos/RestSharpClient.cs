@@ -10,9 +10,9 @@ namespace RecursosCompartilhados.Aplicacao.ServicosExternos
     {
         public static IRestResponse PostAsync(string url, string resource, object body,
             Dictionary<string, string> headers = null, Dictionary<string, string> simpleAuthentication = null, bool security = false,
-            BodyType bodyType = BodyType.ApplicationJson, SerializerStrategy strategy = SerializerStrategy.CamelCase)
+            BodyType bodyType = BodyType.ApplicationJson)
         {
-            switch (strategy)
+            /*switch (strategy)
             {
                 case SerializerStrategy.SnakeJson:
                     SimpleJson.CurrentJsonSerializerStrategy = new SnakeJsonSerializerStrategy();
@@ -22,7 +22,7 @@ namespace RecursosCompartilhados.Aplicacao.ServicosExternos
                     break;
                 default:
                     break;
-            }
+            }*/
 
             if (security)
             {
@@ -124,7 +124,7 @@ namespace RecursosCompartilhados.Aplicacao.ServicosExternos
         }
     }
 
-    class SnakeJsonSerializerStrategy : PocoJsonSerializerStrategy
+    class SnakeJsonSerializerStrategy : SimpleJson.PocoJsonSerializerStrategy
     {
         protected override string MapClrMemberNameToJsonFieldName(string clrPropertyName)
         {
@@ -133,7 +133,7 @@ namespace RecursosCompartilhados.Aplicacao.ServicosExternos
         }
     }
 
-    class CamelCaseJsonSerializerStrategy : PocoJsonSerializerStrategy
+    class CamelCaseJsonSerializerStrategy : SimpleJson.PocoJsonSerializerStrategy
     {
         protected override string MapClrMemberNameToJsonFieldName(string clrPropertyName)
         {

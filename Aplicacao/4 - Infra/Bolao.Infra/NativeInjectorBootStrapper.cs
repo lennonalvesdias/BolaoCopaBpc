@@ -20,8 +20,10 @@ namespace Bolao.Infra
 
             services.AddScoped<IUsuarioServicosApp, UsuarioServicosApp>();
             services.AddScoped<IPalpiteServicosApp, PalpiteServicosApp>();
-            services.AddScoped<IResultadoServicosApp, ResultadoServicosApp>();
+            services.AddScoped<IEquipeServicosApp, EquipeServicosApp>();
             services.AddScoped<IRankingServicosApp, RankingServicosApp>();
+            services.AddScoped<IResultadoServicosApp, ResultadoServicosApp>();
+            services.AddScoped<ITabelaServicosApp, TabelaServicosApp>();
 
             // Dominio
             services.AddScoped<IUsuarioServicos, UsuarioServicos>();

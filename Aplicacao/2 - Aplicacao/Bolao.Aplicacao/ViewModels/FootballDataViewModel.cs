@@ -33,7 +33,7 @@ namespace Bolao.Aplicacao.ViewModels
         [JsonProperty("homeTeam")]
         public HrefTeamViewModel HomeTeam { get; set; }
 
-        [JsonProperty("competition")]
+        [JsonProperty("awayTeam")]
         public HrefTeamViewModel AwayTeam { get; set; }
     }
 
