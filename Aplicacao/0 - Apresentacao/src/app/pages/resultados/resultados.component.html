@@ -14,19 +14,7 @@
   <div class="section section-about-us">
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2 class="title">Como funcionam os pontos?</h2>
-        <h5 class="description">10 pontos para cada placar correto. [MÃE DINÁ]
-          <br/> 03 pontos para cada resultado correto (time vencedor / empate). [FOI QUASE]
-          <br/> Os pontos não se acumulam em um mesmo jogo.
-          <br> (Ou seja mané, ou você faz 10 ou você faz 03 ou você só chora)</h5>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2 class="title">Bora palpitar?</h2>
-        <h5 class="description">Arrisque os placares abaixo e clique no aviãozinho ao lado.
-          <br/>Depois é só ficar na torcida daquela mitada!</h5>
+        <h2 class="title">Veja os resultados das Partidas.</h2>
       </div>
     </div>
   </div>
@@ -52,15 +40,12 @@
             <div class="col-sm-2 ml-auto mr-auto text-center">
               <h5>{{ traduzirNomeEquipe(resultado.homeTeamName) }}</h5>
             </div>
-
             <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
               <div class="input-group">
                 <span class="input-group-addon">
-                  <i class="far fa-futbol"></i>
+                  <i class="far fa-futbol" [ngStyle]="{'color':getVisualizacaoVencedor(resultado.result.goalsHomeTeam,resultado.result.goalsAwayTeam)}"></i>
                 </span>
-                <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)"
-                name="{{ getCodigoEquipe(resultado._links.homeTeam.href) }}" placeholder="Placar"
-                  #placarMandante>
+                <input type="number" class="form-control inputresultado" [value]="resultado.result.goalsHomeTeam" readonly>
               </div>
             </div>
 
@@ -70,11 +55,9 @@
 
             <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
               <div class="input-group">
-                <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), false)"
-                name="{{ getCodigoEquipe(resultado._links.awayTeam.href) }}" placeholder="Placar"
-                  #placarVisitante>
+                <input  class="form-control inputresultado"   type="text" [value]="resultado.result.goalsAwayTeam" readonly>
                 <span class="input-group-addon">
-                  <i class="far fa-futbol"></i>
+                  <i class="far fa-futbol inputresultado" [ngStyle]="{'color':getVisualizacaoVencedor(resultado.result.goalsAwayTeam,resultado.result.goalsHomeTeam)}" ></i>
                 </span>
               </div>
             </div>
@@ -85,12 +68,6 @@
 
             <div class="col-sm-1 ml-auto mr-auto">
               <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
-            </div>
-
-            <div class="col-sm-1 ml-auto mr-auto">
-              <button type="button" class="btn btn-bpc btn-icon btn-round" (click)="palpitar(placarMandante, placarVisitante)">
-                <i class="now-ui-icons ui-1_send"></i>
-              </button>
             </div>
           </div>
         </form>
