@@ -1,0 +1,58 @@
+.section.section-about-us {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+img {
+    box-shadow: 1px 2px 9px 2px #CCC;
+}
+
+.no-space-sm .col-sm-1,
+.no-space-sm .col-sm-2,
+.no-space-sm .col-sm-3,
+.no-space-sm .col-sm-4,
+.no-space-sm .col-sm-5,
+.no-space-sm .col-sm-6,
+.no-space-sm .col-sm-7,
+.no-space-sm .col-sm-8,
+.no-space-sm .col-sm-9,
+.no-space-sm .col-sm-10,
+.no-space-sm .col-sm-11,
+.no-space-sm .col-sm-12,
+.no-space-sm .col-xs-1,
+.no-space-sm .col-xs-2,
+.no-space-sm .col-xs-3,
+.no-space-sm .col-xs-4,
+.no-space-sm .col-xs-5,
+.no-space-sm .col-xs-6,
+.no-space-sm .col-xs-7,
+.no-space-sm .col-xs-8,
+.no-space-sm .col-xs-9,
+.no-space-sm .col-xs-10,
+.no-space-sm .col-xs-11,
+.no-space-sm .col-xs-12
+{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+@media (max-width: 600px) {
+    .section.section-about-us {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 450px) {
+    h1 {
+        font-size: 11vw;
+        margin-bottom: 0px;
+    }
+
+    h2 {
+        font-size: 8vw;
+    }
+
+    h5 {
+        font-size: 6vw;
+    }
+}
