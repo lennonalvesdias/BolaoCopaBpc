@@ -48,7 +48,6 @@ export class ResultadosComponent implements OnInit {
     this._rest.get(this._configEquipes).subscribe(resultados => {
       this._equipes = resultados.data;
     });
-
     // const segmentoResultados = `/usuario/${this._auth.usuarioEmail}`;
     // this._rest.get(this._configResultados, segmentoResultados).subscribe(resultados => {
     //   this._resultados = resultados.data;
@@ -64,10 +63,6 @@ export class ResultadosComponent implements OnInit {
 
   get equipes() {
     return this._equipes;
-  }
-
-  get Resultados() {
-    return this._resultados;
   }
 
   getImagemEquipe(equipeBusca) {
@@ -128,30 +123,6 @@ export class ResultadosComponent implements OnInit {
     }
   }
 
-  palpitar(placarMandante, placarVisitante) {
-    if (!placarMandante.value || !placarVisitante.value) {
-      swal('Ops!', 'Placar vazio você complica o desenvolvedor né?', 'error');
-    }
-
-    const palpite = {
-      email: this._auth.usuarioEmail,
-      mandantePlacar: placarMandante.value,
-      mandanteTime: placarMandante.name,
-      visitantePlacar: placarVisitante.value,
-      visitanteTime: placarVisitante.name
-    };
-
-    const segmento = '/palpitar';
-    this._rest.post(this._configResultados, segmento, palpite).subscribe(data => {
-      this._toastr.success('Seu palpite está na conta!', 'Boa!');
-    }, error => {
-      const regex = /\[.*\]/g;
-      const error_response = regex.exec(error['_body']);
-      // tslint:disable-next-line:max-line-length
-      this._toastr.error(error_response.toString().replace(/\[/g, '').replace(/\]/g, '').replace(/"/g, '').replace(/\,/g, ' '), 'Ops!');
-    });
-  }
-
   getPalpiteJogo(codigoMandante: number, codigoVisitante: number, placarDoMandante: boolean) {
     // tslint:disable-next-line:max-line-length
     const palpiteDoJogo = this._resultados.filter(x => x.mandanteTime.toString() === codigoMandante && x.visitanteTime.toString() === codigoVisitante);
@@ -163,5 +134,18 @@ export class ResultadosComponent implements OnInit {
       }
     }
   }
-
+  getVisualizacaoVencedor(golsFavor: number, golsContra: number) {
+    if (golsFavor === null) {
+      return '';
+    }
+    if (golsFavor > golsContra) {
+      return 'green';
+    } else if (golsFavor < golsContra) {
+      return 'red';
+    } else if (golsFavor === golsContra) {
+      return '#15aabf';
+    } else {
+      return '';
+    }
+  }
 }

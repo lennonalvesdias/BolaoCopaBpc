@@ -1,13 +1,13 @@
 import { ResultadosModule } from './resultados.module';
 
 describe('ResultadosModule', () => {
-  let ResultadosModule: ResultadosModule;
+  let resultadosModule: ResultadosModule;
 
   beforeEach(() => {
-    ResultadosModule = new ResultadosModule();
+    resultadosModule = new ResultadosModule();
   });
 
   it('should create an instance', () => {
-    expect(ResultadosModule).toBeTruthy();
+    expect(resultadosModule).toBeTruthy();
   });
 });
