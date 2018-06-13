@@ -5,7 +5,7 @@ import { PalpitesComponent } from './palpites.component';
 const routes: Routes = [
   {
     path: '', component: PalpitesComponent
-  }
+  },
 ];
 
 @NgModule({
