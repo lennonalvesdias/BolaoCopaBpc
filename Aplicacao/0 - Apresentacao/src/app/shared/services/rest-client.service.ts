@@ -1,16 +1,13 @@
 
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 import { CookieService } from 'ng2-cookies';
 
-// tslint:disable-next-line:import-blacklist
-import 'rxjs/Rx';
-
 import { ApiConfig } from '../models/api-config.interface';
 import { API_BASE_URL } from '../shared.constants';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +16,11 @@ export class RestClientService {
 
   private _headers = new Headers();
   private _baseUrl: string;
+
   constructor(
     private _http: Http,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private _rota: Router
   ) {
     this._headers.set('Content-Type', 'application/json');
     this._baseUrl = API_BASE_URL;

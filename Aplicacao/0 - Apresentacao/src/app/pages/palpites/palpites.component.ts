@@ -117,7 +117,7 @@ export class PalpitesComponent implements OnInit {
       case 'Sweden': return 'Suécia';
       case 'Korea Republic': return 'Coreia do Sul';
       case 'Belgium': return 'Bélgica';
-      case 'Panama': return 'Paranamá';
+      case 'Panama': return 'Panamá';
       case 'Tunisia': return 'Tunísia';
       case 'England': return 'Inglaterra';
       case 'Colombia': return 'Colômbia';
@@ -131,6 +131,12 @@ export class PalpitesComponent implements OnInit {
   palpitar(placarMandante, placarVisitante) {
     if (!placarMandante.value || !placarVisitante.value) {
       swal('Ops!', 'Placar vazio você complica o desenvolvedor né?', 'error');
+      return;
+    }
+
+    if (placarMandante.value < 0 || placarVisitante.value < 0) {
+      swal('Ops!', 'Negativo?! You ta de brincation uite me, cara?', 'error');
+      return;
     }
 
     const palpite = {
@@ -152,7 +158,7 @@ export class PalpitesComponent implements OnInit {
     });
   }
 
-  getPalpiteJogo(codigoMandante: number, codigoVisitante: number, placarDoMandante: boolean) {
+  getPalpiteJogo(codigoMandante, codigoVisitante, placarDoMandante) {
     // tslint:disable-next-line:max-line-length
     const palpiteDoJogo = this._palpites.filter(x => x.mandanteTime.toString() === codigoMandante && x.visitanteTime.toString() === codigoVisitante);
     if (palpiteDoJogo[0]) {
@@ -161,6 +167,16 @@ export class PalpitesComponent implements OnInit {
       } else {
         return palpiteDoJogo[0].visitantePlacar;
       }
+    }
+  }
+
+  temPalpite(codigoMandante, codigoVisitante) {
+    // tslint:disable-next-line:max-line-length
+    const palpiteDoJogo = this._palpites.filter(x => x.mandanteTime.toString() === codigoMandante && x.visitanteTime.toString() === codigoVisitante);
+    if (palpiteDoJogo[0]) {
+      return true;
+    } else {
+      return false;
     }
   }
 

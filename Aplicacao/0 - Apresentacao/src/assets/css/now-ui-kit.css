@@ -1597,6 +1597,13 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
     font-weight: 700;
 }
 
+.btn-bpc-invert {
+    color: #f2ff00;
+    background-color: #009180;
+    border-color: #009180;
+    font-weight: 700;
+}
+
 .btn-primary {
     background-color: #f96332;
     color: #FFFFFF;

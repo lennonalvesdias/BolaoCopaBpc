@@ -14,14 +14,16 @@
               <span class="input-group-addon">
                 <i class="now-ui-icons users_circle-08"></i>
               </span>
-              <input type="text" class="form-control" placeholder="email@bompracredito.com.br" formControlName="email" [class.invalid]="_formularioLogin.controls['email'].touched && !_formularioLogin.controls['email'].valid"
+              <input type="text" class="form-control" placeholder="email@bompracredito.com.br" formControlName="email" 
+              [class.invalid]="_formularioLogin.controls['email'].touched && !_formularioLogin.controls['email'].valid"
                 required/>
             </div>
             <div class="input-group form-group-no-border input-lg">
               <span class="input-group-addon">
                 <i class="now-ui-icons ui-1_lock-circle-open"></i>
               </span>
-              <input type="password" placeholder="senha" class="form-control" formControlName="senha" [class.invalid]="_formularioLogin.controls['senha'].touched && !_formularioLogin.controls['senha'].valid"
+              <input type="password" placeholder="senha" class="form-control" formControlName="senha" (keydown.enter)="entrar()" 
+              [class.invalid]="_formularioLogin.controls['senha'].touched && !_formularioLogin.controls['senha'].valid"
                 required/>
             </div>
           </div>
@@ -52,7 +54,7 @@
               </span>
               <input type="password" placeholder="confirme sua nova senha" class="form-control" formControlName="novaSenhaConfirmacao"
                 [class.invalid]="_formularioNovaSenha.controls['novaSenhaConfirmacao'].touched && !_formularioNovaSenha.controls['novaSenhaConfirmacao'].valid"
-                required/>
+                (keydown.enter)="atualizarSenha()" required/>
             </div>
           </div>
           <div class="footer text-center">

@@ -47,9 +47,12 @@ export class AuthService {
 
   autenticacao(autenticado: boolean, data: any, senha_padrao: boolean) {
     if (autenticado) {
+      const dataCriacao = new Date(data.created);
+      const dataExpiracao = new Date(data.expiration);
+
       this._cookie.set('authenticated', data.authenticated);
-      this._cookie.set('created', data.created);
-      this._cookie.set('expiration', data.expiration);
+      this._cookie.set('created', dataCriacao);
+      this._cookie.set('expiration', dataExpiracao);
       this._cookie.set('accessToken', data.accessToken);
       this._cookie.set('message', data.message);
 
