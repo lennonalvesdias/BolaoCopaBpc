@@ -48,6 +48,10 @@ export class ResultadosComponent implements OnInit {
     this._rest.get(this._configEquipes).subscribe(resultados => {
       this._equipes = resultados.data;
     });
+    // const segmentoResultados = `/usuario/${this._auth.usuarioEmail}`;
+    // this._rest.get(this._configResultados, segmentoResultados).subscribe(resultados => {
+    //   this._resultados = resultados.data;
+    // });
   }
 
   ngOnInit() {

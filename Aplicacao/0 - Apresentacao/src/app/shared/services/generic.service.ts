@@ -1,6 +1,4 @@
-import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable, EventEmitter } from '@angular/core';
-
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -11,10 +9,7 @@ export class GenericService {
     isLoading: boolean;
     loadingChange: Subject<boolean> = new Subject<boolean>();
 
-    constructor(
-        private _router: Router,
-        private _activatedRoute: ActivatedRoute
-    ) {
+    constructor() {
         this.loadingChange.subscribe((value) => {
             this.isLoading = value;
         });

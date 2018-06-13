@@ -14,6 +14,7 @@ import { LayoutDefault } from './../layouts/default/default.component';
 import { ComponentsModule } from './../shared/components/components.module';
 import { LoginModule } from './login/login.module';
 import { PalpitesModule } from './palpites/palpites.module';
+import { ResultadosModule } from './resultados/resultados.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { PalpitesModule } from './palpites/palpites.module';
     ComponentsModule,
 
     LoginModule,
-    PalpitesModule
+    PalpitesModule,
+    ResultadosModule
   ],
   declarations: [LayoutDefault],
   providers: [
