@@ -51,8 +51,8 @@ export class AuthService {
       const dataExpiracao = new Date(data.expiration);
 
       this._cookie.set('authenticated', data.authenticated);
-      this._cookie.set('created', dataCriacao);
-      this._cookie.set('expiration', dataExpiracao);
+      this._cookie.set('created', dataCriacao.toISOString());
+      this._cookie.set('expiration', dataExpiracao.toISOString());
       this._cookie.set('accessToken', data.accessToken);
       this._cookie.set('message', data.message);
 
