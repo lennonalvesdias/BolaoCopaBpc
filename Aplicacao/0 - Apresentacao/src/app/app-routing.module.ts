@@ -8,6 +8,9 @@ const routes: Routes = [
 
   {
     path: '**', redirectTo: 'palpites', pathMatch: 'full'
+  },
+  {
+    path: '**', redirectTo: 'resultados', pathMatch: 'full'
   }
 ];
 

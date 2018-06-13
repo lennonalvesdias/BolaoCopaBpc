@@ -16,6 +16,9 @@ const routes: Routes = [
       {
         path: 'palpites', loadChildren: './palpites/palpites.module#PalpitesModule'
       },
+      {
+        path: 'resultados', loadChildren: './resultados/resultados.module#ResultadosModule'
+      },
     ]
   },
 
