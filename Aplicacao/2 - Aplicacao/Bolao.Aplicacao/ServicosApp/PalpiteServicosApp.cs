@@ -187,12 +187,12 @@ namespace Bolao.Aplicacao.ServicosApp
                 return;
             }
 
-            var horarioValido = HorarioValido();
-            if (horarioValido == false)
-            {
-                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Você não pode mais cadastrar novos palpites."));
-                return;
-            }
+            //var horarioValido = HorarioValido();
+            //if (horarioValido == false)
+            //{
+            //    _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Você não pode mais cadastrar novos palpites."));
+            //    return;
+            //}
 
             if (viewModel.MandantePlacar > viewModel.VisitantePlacar)
             {

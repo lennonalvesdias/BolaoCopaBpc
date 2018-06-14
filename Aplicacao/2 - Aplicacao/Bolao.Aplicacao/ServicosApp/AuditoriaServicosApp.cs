@@ -31,12 +31,12 @@ namespace Bolao.Aplicacao.ServicosApp
                 return null;
             }
 
-            var horarioValido = HorarioValido();
-            if (horarioValido == false)
-            {
-                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Auditoria liberada a partir das 12h de 14/06/2018."));
-                return null;
-            }
+            //var horarioValido = HorarioValido();
+            //if (horarioValido == false)
+            //{
+            //    _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Auditoria liberada a partir das 12h de 14/06/2018."));
+            //    return null;
+            //}
 
             return _palpiteServicosApp.ListarPorUsuario(email);
         }
