@@ -3,6 +3,7 @@ version: '3'
 services:
     front:
         build: Aplicacao/0 - Apresentacao
+        container_name: bpc_bolao_front
         ports:
             - "1994:4200"
         networks:
@@ -11,6 +12,7 @@ services:
     
     mongodbc:
         image: mongo:latest
+        container_name: bpc_bolao_db
         ports:
             - "27017:27017"
         networks: 
@@ -24,6 +26,7 @@ services:
     
     apiserver:
         build: .
+        container_name: bpc_bolao_api
         ports:
             - "58202:58202"
         networks: 
