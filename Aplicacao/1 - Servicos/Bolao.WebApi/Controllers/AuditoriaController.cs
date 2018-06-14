@@ -14,8 +14,7 @@ namespace Bolao.WebApi.Controllers
         {
             _servicosApp = servicosApp;
         }
-
-        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
+        
         [HttpGet]
         [Route("auditoria/{email}")]
         public IActionResult Auditoria(string email)
