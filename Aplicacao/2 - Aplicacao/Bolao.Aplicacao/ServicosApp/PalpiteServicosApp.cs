@@ -170,7 +170,7 @@ namespace Bolao.Aplicacao.ServicosApp
 
         private bool HorarioValido()
         {
-            if (DateTime.UtcNow <= new DateTime(2018, 06, 14, 15, 00, 00))
+            if (DateTime.Now <= new DateTime(2018, 06, 14, 15, 00, 00))
             {
                 return false;
             }
