@@ -19,6 +19,9 @@ const routes: Routes = [
       {
         path: 'resultados', loadChildren: './resultados/resultados.module#ResultadosModule'
       },
+      {
+        path: 'auditoria', loadChildren: './auditoria/auditoria.module#AuditoriaModule'
+      }
     ]
   },
 

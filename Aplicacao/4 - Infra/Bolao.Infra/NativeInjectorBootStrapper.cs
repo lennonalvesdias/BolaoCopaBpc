@@ -24,6 +24,7 @@ namespace Bolao.Infra
             services.AddScoped<IRankingServicosApp, RankingServicosApp>();
             services.AddScoped<IResultadoServicosApp, ResultadoServicosApp>();
             services.AddScoped<ITabelaServicosApp, TabelaServicosApp>();
+            services.AddScoped<IAuditoriaServicosApp, AuditoriaServicosApp>();
 
             // Dominio
             services.AddScoped<IUsuarioServicos, UsuarioServicos>();

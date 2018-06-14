@@ -15,6 +15,7 @@ import { ComponentsModule } from './../shared/components/components.module';
 import { LoginModule } from './login/login.module';
 import { PalpitesModule } from './palpites/palpites.module';
 import { ResultadosModule } from './resultados/resultados.module';
+import { AuditoriaModule } from './auditoria/auditoria.module';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ResultadosModule } from './resultados/resultados.module';
 
     LoginModule,
     PalpitesModule,
-    ResultadosModule
+    ResultadosModule,
+    AuditoriaModule
   ],
   declarations: [LayoutDefault],
   providers: [

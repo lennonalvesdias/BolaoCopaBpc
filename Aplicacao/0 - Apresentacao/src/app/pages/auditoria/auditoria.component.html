@@ -1,0 +1,92 @@
+<div class="wrapper">
+  <div class="page-header page-header-small">
+    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/auditoria.jpg');">
+    </div>
+    <div class="container">
+      <div class="content-center">
+        <h1 class="title">Olho no laaaance!
+          <br/>Aqui não deixamos passar nada.</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="section text-center">
+    <div class="container">
+      <h2 class="title">Aqui também tem árbitro de vídeo.</h2>
+      <h5 class="description">Ou alguma coisa parecida com isso...</h5>
+      <form class="form" method="" action="" [formGroup]="_formularioAuditoria">
+        <div class="row">
+          <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
+            <div class="input-group input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons users_circle-08"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="email@bompracredito.com.br" formControlName="email" (keydown.enter)="buscarPalpites()"
+                [class.invalid]="_formularioAuditoria.controls['email'].touched && !_formularioAuditoria.controls['email'].valid">
+            </div>
+            <div class="send-button">
+              <button type="button" class="btn btn-bpc btn-round btn-block btn-lg" (click)="buscarPalpites()">{{ loading ? 'AGUARDE' : 'DAR UMA ESPIADINHA' }}</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="section">
+    <ng-container *ngIf="loading && (!resultados || !equipes || !palpites)">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">
+            <i class="now-ui-icons loader_refresh spin"></i>
+          </h2>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!loading && resultados && equipes && palpites">
+      <ng-container *ngFor="let resultado of resultados">
+        <div class="row col-sm-10 ml-auto mr-auto no-space-sm" *ngIf="resultado.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
+          <div class="col-sm-1 ml-auto mr-auto">
+            <img [src]="getImagemEquipe(resultado._links.homeTeam.href)">
+          </div>
+
+          <div class="col-sm-2 ml-auto mr-auto text-center">
+            <h5>{{ traduzirNomeEquipe(resultado.homeTeamName) }}</h5>
+          </div>
+
+          <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="far fa-futbol"></i>
+              </span>
+              <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)"
+                name="{{ getCodigoEquipe(resultado._links.homeTeam.href) }}" placeholder="Placar" #placarMandante>
+            </div>
+          </div>
+
+          <div class="col-sm-1 ml-auto mr-auto text-center">
+            <h5>x</h5>
+          </div>
+
+          <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+            <div class="input-group">
+              <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), false)"
+                name="{{ getCodigoEquipe(resultado._links.awayTeam.href) }}" placeholder="Placar" #placarVisitante>
+              <span class="input-group-addon">
+                <i class="far fa-futbol"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-sm-2 ml-auto mr-auto text-center">
+            <h5> {{ traduzirNomeEquipe(resultado.awayTeamName) }} </h5>
+          </div>
+
+          <div class="col-sm-1 ml-auto mr-auto">
+            <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

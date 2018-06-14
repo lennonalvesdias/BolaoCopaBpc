@@ -71,7 +71,7 @@ namespace Bolao.Aplicacao.ServicosApp
             var usuario = ExisteUsuario(viewModel.Email);
             if (usuario == false)
             {
-                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Não existe usuário cadastrado com este apelido."));
+                _notificacoes.Adicionar(new NotificacaoDeDominio(string.Empty, "Não existe usuário cadastrado com este e-mail."));
                 return;
             }
 

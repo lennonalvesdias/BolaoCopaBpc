@@ -7,7 +7,6 @@ import { CookieService } from 'ng2-cookies';
 
 import { ApiConfig } from '../models/api-config.interface';
 import { API_BASE_URL } from '../shared.constants';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +19,6 @@ export class RestClientService {
   constructor(
     private _http: Http,
     private _cookieService: CookieService,
-    private _rota: Router
   ) {
     this._headers.set('Content-Type', 'application/json');
     this._baseUrl = API_BASE_URL;
@@ -35,15 +33,17 @@ export class RestClientService {
       this._headers.set('Authorization', this.autenticacao);
     }
 
-    if (config.Debug) {
-      return config.UrlDebug + segmento;
+    let returnUrl = config.Debug ? config.UrlDebug : this._baseUrl;
+
+    if (config.Prefixo) {
+      returnUrl += config.Prefixo;
     }
 
-    if (!segmento) {
-      return this._baseUrl + config.Prefixo;
+    if (segmento) {
+      returnUrl += segmento;
     }
 
-    return this._baseUrl + config.Prefixo + segmento;
+    return returnUrl;
   }
 
   private gerarHeaders(headers: Map<string, string>) {
