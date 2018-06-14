@@ -45,30 +45,30 @@
       <ng-container *ngFor="let resultado of resultados">
         <form class="form">
           <div class="row col-sm-10 ml-auto mr-auto no-space-sm" *ngIf="resultado.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
-            <div class="col-sm-1 ml-auto mr-auto">
+            <div class="col-xs-line col-xs-left col-sm-0-5 col-md-1 ml-auto mr-auto">
               <img [src]="getImagemEquipe(resultado._links.homeTeam.href)">
             </div>
 
-            <div class="col-sm-2 ml-auto mr-auto text-center">
+            <div class="col-xs-line col-xs-right col-sm-2 ml-auto mr-auto text-center">
               <h5>{{ traduzirNomeEquipe(resultado.homeTeamName) }}</h5>
             </div>
 
-            <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+            <div class="col-sm-3 col-md-2 ml-auto mr-auto">
               <div class="input-group">
                 <span class="input-group-addon">
                   <i class="far fa-futbol"></i>
                 </span>
-                <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)" 
+                <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)"
                 name="{{ getCodigoEquipe(resultado._links.homeTeam.href) }}" placeholder="Placar"
                   #placarMandante>
               </div>
             </div>
 
-            <div class="col-sm-1 ml-auto mr-auto text-center">
+            <div class="col-sm-0-5 col-md-1 ml-auto mr-auto text-center">
               <h5>x</h5>
             </div>
 
-            <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+            <div class="col-sm-3 col-md-2 ml-auto mr-auto">
               <div class="input-group">
                 <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), false)"
                 name="{{ getCodigoEquipe(resultado._links.awayTeam.href) }}" placeholder="Placar"
@@ -79,19 +79,26 @@
               </div>
             </div>
 
-            <div class="col-sm-2 ml-auto mr-auto text-center">
-              <h5> {{ traduzirNomeEquipe(resultado.awayTeamName) }} </h5>
-            </div>
-
-            <div class="col-sm-1 ml-auto mr-auto">
+            <div class="col-xs-line col-xs-left ml-auto mr-auto visible-xs">
               <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
             </div>
 
-            <!-- <div class="col-sm-1 ml-auto mr-auto text-center">
-              <button type="button" class="btn btn-bpc btn-icon btn-round" (click)="palpitar(placarMandante, placarVisitante)">
+            <div class="col-xs-line col-xs-right col-sm-2 ml-auto mr-auto text-center">
+              <h5> {{ traduzirNomeEquipe(resultado.awayTeamName) }} </h5>
+            </div>
+
+            <div class="col-sm-0-5 col-md-1 ml-auto mr-auto hidden-xs">
+              <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
+            </div>
+
+            <!--<div class="col-sm-0-5 col-md-1 ml-auto mr-auto text-center">
+              <button type="button" class="btn btn-bpc btn-icon btn-round hidden-xs" (click)="palpitar(placarMandante, placarVisitante)">
                 <i class="now-ui-icons ui-1_send"></i>
               </button>
-            </div> -->
+              <button type="button" class="btn btn-bpc btn-icon btn-round visible-xs" (click)="palpitar(placarMandante, placarVisitante)">
+                <i class="now-ui-icons ui-1_send"></i> Palpitar
+              </button>
+            </div>-->
           </div>
         </form>
       </ng-container>

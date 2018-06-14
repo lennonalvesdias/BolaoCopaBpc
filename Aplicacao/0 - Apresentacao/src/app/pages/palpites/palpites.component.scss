@@ -1,10 +1,11 @@
-.section.section-about-us {
-    padding-left: 15px;
-    padding-right: 15px;
+.section {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
 }
 
 img {
-    box-shadow: 1px 2px 9px 2px #CCC;
+  box-shadow: 1px 2px 9px 2px #CCC;
 }
 
 .no-space-sm .col-sm-1,
@@ -19,40 +20,96 @@ img {
 .no-space-sm .col-sm-10,
 .no-space-sm .col-sm-11,
 .no-space-sm .col-sm-12,
-.no-space-sm .col-xs-1,
-.no-space-sm .col-xs-2,
-.no-space-sm .col-xs-3,
-.no-space-sm .col-xs-4,
-.no-space-sm .col-xs-5,
-.no-space-sm .col-xs-6,
-.no-space-sm .col-xs-7,
-.no-space-sm .col-xs-8,
-.no-space-sm .col-xs-9,
-.no-space-sm .col-xs-10,
-.no-space-sm .col-xs-11,
-.no-space-sm .col-xs-12
+.no-space-sm .col-sm-0-5
 {
-    padding-right: 0px;
-    padding-left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.visible-xs {
+  display: none;
+}
+
+@media (max-width: 1124px) {
+  h5 {
+    font-size: 2vw;
+   }
 }
 
 @media (max-width: 600px) {
-    .section.section-about-us {
-        padding-top: 30px;
-    }
+  .section {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  h5 {
+    font-size: 5vw;
+    margin-bottom: 10px;
+  }
+
+  .col-xs-line {
+    float: left;
+    display: inline-block;
+    width: auto;
+  }
+
+  .col-xs-left {
+    margin-right: 5px !important;
+  }
+
+  .col-xs-line img {
+    width: 25px;
+  }
+
+  .col-xs-right {
+    margin-left: 5px !important;
+  }
+
+  .hidden-xs {
+    display: none;
+  }
+
+  .visible-xs {
+    display: block;
+  }
+
+  .btn.btn-icon {
+    width: 100%;
+    line-height: 1.5626rem;
+    margin-bottom: 25px;
+  }
+
+  .btn.btn-icon i {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform:  none;
+  }
 }
 
 @media (max-width: 450px) {
-    h1 {
-        font-size: 11vw;
-        margin-bottom: 0px;
-    }
+  h1 {
+      font-size: 11vw;
+      margin-bottom: 0px;
+  }
 
-    h2 {
-        font-size: 8vw;
-    }
+  h2 {
+      font-size: 8vw;
+  }
+}
 
-    h5 {
-        font-size: 6vw;
-    }
+@media (max-width: 767px) and (min-width: 576px) {
+  .btn.btn-icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    font-size: 14px;
+    margin-left: 15px;
+  }
+
+  .col-sm-0-5 {
+    max-width: 4.16%;
+  }
 }
