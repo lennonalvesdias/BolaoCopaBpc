@@ -16,6 +16,9 @@ services:
         networks: 
             - backendapi
         restart: unless-stopped
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: lennonalvesdias
+            MONGO_INITDB_ROOT_PASSWORD: 08TFYGCHKZ85Q3XQO0YQ684RMFJ7L9FC
     
     apiserver:
         build: .
