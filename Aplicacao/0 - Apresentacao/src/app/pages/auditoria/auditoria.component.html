@@ -60,7 +60,7 @@
                 <i class="far fa-futbol"></i>
               </span>
               <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)"
-                name="{{ getCodigoEquipe(resultado._links.homeTeam.href) }}" placeholder="Placar" #placarMandante>
+                name="{{ getCodigoEquipe(resultado._links.homeTeam.href) }}" placeholder="Placar" #placarMandante readonly>
             </div>
           </div>
 
@@ -71,7 +71,7 @@
           <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
             <div class="input-group">
               <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), false)"
-                name="{{ getCodigoEquipe(resultado._links.awayTeam.href) }}" placeholder="Placar" #placarVisitante>
+                name="{{ getCodigoEquipe(resultado._links.awayTeam.href) }}" placeholder="Placar" #placarVisitante readonly>
               <span class="input-group-addon">
                 <i class="far fa-futbol"></i>
               </span>
