@@ -15,6 +15,8 @@ services:
             - "27017:27017"
         networks: 
             - backendapi
+        volumes:
+            - db_mongo:/data/db
         restart: unless-stopped
         environment:
             MONGO_INITDB_ROOT_USERNAME: lennonalvesdias
@@ -28,6 +30,9 @@ services:
             - backendapi
             - nginx-proxy
         restart: always
+
+volumes:
+    db_mongo:
 
 networks:
     nginx-proxy:
