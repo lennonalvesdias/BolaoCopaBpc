@@ -28,7 +28,7 @@ export class AuditoriaComponent implements OnInit {
   };
 
   private _configAuditoria: ApiConfig = {
-    Debug: true,
+    Debug: false,
     Prefixo: '/auditoria',
     UrlDebug: 'http://localhost:58202',
   };
