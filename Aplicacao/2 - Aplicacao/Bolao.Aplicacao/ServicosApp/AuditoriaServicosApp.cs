@@ -57,12 +57,17 @@ namespace Bolao.Aplicacao.ServicosApp
 
         private bool HorarioValido()
         {
-            if (DateTime.Now <= new DateTime(2018, 06, 14, 12, 00, 00))
+            if (HorarioDeBrasilia(DateTime.Now) <= new DateTime(2018, 06, 14, 12, 00, 00))
             {
                 return false;
             }
 
             return true;
+        }
+
+        private DateTime HorarioDeBrasilia(DateTime data)
+        {
+            return TimeZoneInfo.ConvertTime(data, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
         }
     }
 }
