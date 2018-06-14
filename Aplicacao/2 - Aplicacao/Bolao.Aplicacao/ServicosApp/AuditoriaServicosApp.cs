@@ -57,7 +57,7 @@ namespace Bolao.Aplicacao.ServicosApp
 
         private bool HorarioValido()
         {
-            if (HorarioDeBrasilia(DateTime.Now) <= new DateTime(2018, 06, 14, 12, 00, 00))
+            if (DateTime.UtcNow <= new DateTime(2018, 06, 14, 15, 00, 00))
             {
                 return false;
             }
