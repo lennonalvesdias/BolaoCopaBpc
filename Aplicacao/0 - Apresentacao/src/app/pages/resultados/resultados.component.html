@@ -1,5 +1,4 @@
 <div class="wrapper">
-
   <div class="page-header page-header-small">
     <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/resultados.jpg');">
     </div>
@@ -34,15 +33,15 @@
       <ng-container *ngFor="let resultado of resultados">
         <ng-container *ngIf="resultado.result.goalsHomeTeam !== null && resultado.result.goalsAwayTeam !== null">
           <form class="form">
-            <div class="row col-sm-9 ml-auto mr-auto" *ngIf="resultado.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
-              <div class="col-sm-1 ml-auto mr-auto">
+            <div class="row col-sm-10 ml-auto mr-auto no-space-sm" *ngIf="resultado.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
+              <div class="col-xs-line col-xs-left col-sm-0-5 col-md-1 ml-auto mr-auto">
                 <img [src]="getImagemEquipe(resultado._links.homeTeam.href)">
               </div>
 
-              <div class="col-sm-2 ml-auto mr-auto text-center">
+              <div class="col-xs-line col-xs-right col-sm-2 ml-auto mr-auto text-center">
                 <h5>{{ traduzirNomeEquipe(resultado.homeTeamName) }}</h5>
               </div>
-              <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+              <div class="col-sm-3 col-md-2 ml-auto mr-auto">
                 <div class="input-group">
                   <span class="input-group-addon">
                     <i class="far fa-futbol transparent" [ngStyle]="{'color':getVisualizacaoVencedor(resultado.result.goalsHomeTeam,resultado.result.goalsAwayTeam)}"></i>
@@ -51,11 +50,11 @@
                 </div>
               </div>
 
-              <div class="col-sm-1 ml-auto mr-auto text-center">
+              <div class="col-sm-0-5 col-md-1 ml-auto mr-auto text-center">
                 <h5>x</h5>
               </div>
 
-              <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+              <div class="col-sm-3 col-md-2 ml-auto mr-auto">
                 <div class="input-group">
                   <input class="form-control transparent" disabled type="text" [value]="resultado.result.goalsAwayTeam">
                   <span class="input-group-addon">
@@ -64,11 +63,15 @@
                 </div>
               </div>
 
-              <div class="col-sm-2 ml-auto mr-auto text-center">
+              <div class="col-xs-line col-xs-left ml-auto mr-auto visible-xs">
+                <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
+              </div>
+    
+              <div class="col-xs-line col-xs-right col-sm-2 ml-auto mr-auto text-center">
                 <h5> {{ traduzirNomeEquipe(resultado.awayTeamName) }} </h5>
               </div>
-
-              <div class="col-sm-1 ml-auto mr-auto">
+    
+              <div class="col-sm-0-5 col-md-1 ml-auto mr-auto hidden-xs">
                 <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
               </div>
             </div>
