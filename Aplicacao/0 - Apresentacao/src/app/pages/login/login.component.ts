@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   private _senhaPadrao = false;
   private _loading = false;
+  private _formError = false;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -94,6 +95,10 @@ export class LoginComponent implements OnInit {
 
   get senhaPadrao() {
     return this._senhaPadrao;
+  }
+
+  get formError() {
+    return this._formError;
   }
 
 }

@@ -15,6 +15,9 @@ export class AuditoriaComponent implements OnInit {
   public _formularioAuditoria: FormGroup;
   private _loading = false;
 
+  private _formError = false;
+  private _formSuccess = false;
+
   private _configResultados: ApiConfig = {
     Debug: false,
     Prefixo: '/resultados',
@@ -72,6 +75,14 @@ export class AuditoriaComponent implements OnInit {
 
   get loading() {
     return this._loading;
+  }
+
+  get formError() {
+    return this._formError;
+  }
+
+  get formSuccess() {
+    return this._formSuccess;
   }
 
   getImagemEquipe(equipeBusca) {
@@ -164,12 +175,17 @@ export class AuditoriaComponent implements OnInit {
         this._toastr.error('Nenhum palpite encontrado.', 'Ops!');
       }
       this._loading = false;
+      this._formError = false;
+      this._formSuccess = true;
     }, error => {
       const regex = /\[.*\]/g;
       const error_response = regex.exec(error['_body']);
       // tslint:disable-next-line:max-line-length
       this._toastr.error(error_response.toString().replace(/\[/g, '').replace(/\]/g, '').replace(/"/g, '').replace(/\,/g, ' '), 'Ops!');
       this._loading = false;
+      this._formError = true;
+      this._formSuccess = false;
+      this._palpites = null;
     });
   }
 

@@ -11,18 +11,20 @@
               </div>
             </div>
             <div class="content">
-              <div class="input-group form-group-no-border input-lg">
+              <div class="input-group form-group-no-border input-lg" [ngClass]="{'has-danger' : formError}">
                 <span class="input-group-addon">
                   <i class="now-ui-icons users_circle-08"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="email@bompracredito.com.br" formControlName="email" [class.invalid]="_formularioLogin.controls['email'].touched && !_formularioLogin.controls['email'].valid"
+                <input type="text" class="form-control" placeholder="email@bompracredito.com.br" formControlName="email" 
+                [ngClass]="{'form-control-danger' : formError}" [class.invalid]="_formularioLogin.controls['email'].touched && !_formularioLogin.controls['email'].valid"
                   required/>
               </div>
-              <div class="input-group form-group-no-border input-lg">
+              <div class="input-group form-group-no-border input-lg" [ngClass]="{'has-danger' : formError}">
                 <span class="input-group-addon">
                   <i class="now-ui-icons ui-1_lock-circle-open"></i>
                 </span>
-                <input type="password" placeholder="senha" class="form-control" formControlName="senha" (keydown.enter)="entrar()" [class.invalid]="_formularioLogin.controls['senha'].touched && !_formularioLogin.controls['senha'].valid"
+                <input type="password" placeholder="senha" class="form-control" formControlName="senha" (keydown.enter)="entrar()" 
+                [ngClass]="{'form-control-danger' : formError}" [class.invalid]="_formularioLogin.controls['senha'].touched && !_formularioLogin.controls['senha'].valid"
                   required/>
               </div>
             </div>
@@ -40,19 +42,19 @@
               </div>
             </div>
             <div class="content">
-              <div class="input-group form-group-no-border input-lg">
+              <div class="input-group form-group-no-border input-lg" [ngClass]="{'has-danger' : formError}">
                 <span class="input-group-addon">
                   <i class="now-ui-icons users_circle-08"></i>
                 </span>
-                <input type="password" placeholder="nova senha" class="form-control" formControlName="novaSenha" [class.invalid]="_formularioNovaSenha.controls['novaSenha'].touched && !_formularioNovaSenha.controls['novaSenha'].valid"
+                <input type="password" placeholder="nova senha" class="form-control" formControlName="novaSenha" [ngClass]="{'form-control-danger' : formError}" [class.invalid]="_formularioNovaSenha.controls['novaSenha'].touched && !_formularioNovaSenha.controls['novaSenha'].valid"
                   required/>
               </div>
-              <div class="input-group form-group-no-border input-lg">
+              <div class="input-group form-group-no-border input-lg" [ngClass]="{'has-danger' : formError}">
                 <span class="input-group-addon">
                   <i class="now-ui-icons ui-1_lock-circle-open"></i>
                 </span>
                 <input type="password" placeholder="confirme sua nova senha" class="form-control" formControlName="novaSenhaConfirmacao"
-                  [class.invalid]="_formularioNovaSenha.controls['novaSenhaConfirmacao'].touched && !_formularioNovaSenha.controls['novaSenhaConfirmacao'].valid"
+                [ngClass]="{'form-control-danger' : formError}" [class.invalid]="_formularioNovaSenha.controls['novaSenhaConfirmacao'].touched && !_formularioNovaSenha.controls['novaSenhaConfirmacao'].valid"
                   (keydown.enter)="atualizarSenha()" required/>
               </div>
             </div>

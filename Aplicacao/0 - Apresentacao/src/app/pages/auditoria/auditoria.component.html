@@ -17,11 +17,11 @@
       <form class="form" method="" action="" [formGroup]="_formularioAuditoria">
         <div class="row">
           <div class="col-lg-6 text-center col-md-8 ml-auto mr-auto">
-            <div class="input-group input-lg">
+            <div class="input-group form-group-no-border input-lg" [ngClass]="{'has-danger' : formError, 'has-success' : formSuccess}">
               <span class="input-group-addon">
                 <i class="now-ui-icons users_circle-08"></i>
               </span>
-              <input type="text" class="form-control" placeholder="email@bompracredito.com.br" formControlName="email" (keydown.enter)="buscarPalpites()"
+              <input type="text" class="form-control form-control-danger" [ngClass]="{'form-control-danger' : formError, 'form-control-success' : formSuccess}" placeholder="email@bompracredito.com.br" formControlName="email" (keydown.enter)="buscarPalpites()"
                 [class.invalid]="_formularioAuditoria.controls['email'].touched && !_formularioAuditoria.controls['email'].valid">
             </div>
             <div class="send-button">
@@ -57,9 +57,9 @@
           <div class="col-sm-3 col-md-2 ml-auto mr-auto">
             <div class="input-group">
               <span class="input-group-addon">
-                <i class="far fa-futbol"></i>
+                <i class="far fa-futbol transparent"></i>
               </span>
-              <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)"
+              <input type="string" disabled class="form-control transparent" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), true)"
               name="{{ getCodigoEquipe(resultado._links.homeTeam.href) }}" placeholder="Placar" #placarMandante readonly>
             </div>
           </div>
@@ -70,10 +70,10 @@
 
           <div class="col-sm-3 col-md-2 ml-auto mr-auto">
             <div class="input-group">
-              <input type="number" class="form-control" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), false)"
+              <input type="string" disabled class="form-control transparent" [value]="getPalpiteJogo(getCodigoEquipe(resultado._links.homeTeam.href), getCodigoEquipe(resultado._links.awayTeam.href), false)"
               name="{{ getCodigoEquipe(resultado._links.awayTeam.href) }}" placeholder="Placar" #placarVisitante readonly>
               <span class="input-group-addon">
-                <i class="far fa-futbol"></i>
+                <i class="far fa-futbol transparent"></i>
               </span>
             </div>
           </div>

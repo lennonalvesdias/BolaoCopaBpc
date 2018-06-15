@@ -1,12 +1,12 @@
 <div class="wrapper">
 
   <div class="page-header page-header-small">
-    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/palpites.jpg');">
+    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/resultados.jpg');">
     </div>
     <div class="container">
       <div class="content-center">
-        <h1 class="title">Texto diferente
-          <br/>só pra saber que mudou!</h1>
+        <h1 class="title">Ripa na chulipa e 
+          <br/>pimba na gorduchinha!</h1>
       </div>
     </div>
   </div>
@@ -14,13 +14,14 @@
   <div class="section section-about-us">
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2 class="title">Veja os resultados das Partidas.</h2>
+        <h2 class="title">Agora é fechar o caixão e beijar a viúva.</h2>
+        <h5 class="description">Confira os jogos já realizados e veja se você mandou bem.</h5>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <!-- <ng-container *ngIf="!resultados || !equipes">
+    <ng-container *ngIf="!resultados || !equipes">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto text-center">
           <h2 class="title">
@@ -31,47 +32,49 @@
     </ng-container>
     <ng-container *ngIf="resultados && equipes">
       <ng-container *ngFor="let resultado of resultados">
-        <form class="form">
-          <div class="row col-sm-9 ml-auto mr-auto" *ngIf="resultado.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
-            <div class="col-sm-1 ml-auto mr-auto">
-              <img [src]="getImagemEquipe(resultado._links.homeTeam.href)">
-            </div>
+        <ng-container *ngIf="resultado.result.goalsHomeTeam !== null && resultado.result.goalsAwayTeam !== null">
+          <form class="form">
+            <div class="row col-sm-9 ml-auto mr-auto" *ngIf="resultado.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
+              <div class="col-sm-1 ml-auto mr-auto">
+                <img [src]="getImagemEquipe(resultado._links.homeTeam.href)">
+              </div>
 
-            <div class="col-sm-2 ml-auto mr-auto text-center">
-              <h5>{{ traduzirNomeEquipe(resultado.homeTeamName) }}</h5>
-            </div>
-            <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
-              <div class="input-group">
-                <span class="input-group-addon">
-                  <i class="far fa-futbol" [ngStyle]="{'color':getVisualizacaoVencedor(resultado.result.goalsHomeTeam,resultado.result.goalsAwayTeam)}"></i>
-                </span>
-                <input type="number" class="form-control inputresultado" [value]="resultado.result.goalsHomeTeam" readonly>
+              <div class="col-sm-2 ml-auto mr-auto text-center">
+                <h5>{{ traduzirNomeEquipe(resultado.homeTeamName) }}</h5>
+              </div>
+              <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="far fa-futbol transparent" [ngStyle]="{'color':getVisualizacaoVencedor(resultado.result.goalsHomeTeam,resultado.result.goalsAwayTeam)}"></i>
+                  </span>
+                  <input type="string" disabled class="form-control transparent" [value]="resultado.result.goalsHomeTeam">
+                </div>
+              </div>
+
+              <div class="col-sm-1 ml-auto mr-auto text-center">
+                <h5>x</h5>
+              </div>
+
+              <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
+                <div class="input-group">
+                  <input class="form-control transparent" disabled type="text" [value]="resultado.result.goalsAwayTeam">
+                  <span class="input-group-addon">
+                    <i class="far fa-futbol transparent" [ngStyle]="{'color':getVisualizacaoVencedor(resultado.result.goalsAwayTeam,resultado.result.goalsHomeTeam)}"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-sm-2 ml-auto mr-auto text-center">
+                <h5> {{ traduzirNomeEquipe(resultado.awayTeamName) }} </h5>
+              </div>
+
+              <div class="col-sm-1 ml-auto mr-auto">
+                <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
               </div>
             </div>
-
-            <div class="col-sm-1 ml-auto mr-auto text-center">
-              <h5>x</h5>
-            </div>
-
-            <div class="col-sm-2 col-lg-2 ml-auto mr-auto">
-              <div class="input-group">
-                <input  class="form-control inputresultado"   type="text" [value]="resultado.result.goalsAwayTeam" readonly>
-                <span class="input-group-addon">
-                  <i class="far fa-futbol inputresultado" [ngStyle]="{'color':getVisualizacaoVencedor(resultado.result.goalsAwayTeam,resultado.result.goalsHomeTeam)}" ></i>
-                </span>
-              </div>
-            </div>
-
-            <div class="col-sm-2 ml-auto mr-auto text-center">
-              <h5> {{ traduzirNomeEquipe(resultado.awayTeamName) }} </h5>
-            </div>
-
-            <div class="col-sm-1 ml-auto mr-auto">
-              <img [src]="getImagemEquipe(resultado._links.awayTeam.href)">
-            </div>
-          </div>
-        </form>
+          </form>
+        </ng-container>
       </ng-container>
-    </ng-container> -->
+    </ng-container>
   </div>
 </div>

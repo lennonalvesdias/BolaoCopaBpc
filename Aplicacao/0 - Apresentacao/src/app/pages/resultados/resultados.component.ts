@@ -4,9 +4,6 @@ import { ApiConfig } from '../../shared/models/api-config.interface';
 import { RestClientService } from '../../shared/services/rest-client.service';
 import { AuthService } from '../../shared/auth/auth.service';
 
-import { ToastrService } from 'ngx-toastr';
-import swal from 'sweetalert2';
-
 @Component({
   selector: 'app-resultados',
   templateUrl: './resultados.component.html',
@@ -26,20 +23,12 @@ export class ResultadosComponent implements OnInit {
     UrlDebug: '',
   };
 
-  // private _configResultados: ApiConfig = {
-  //   Debug: false,
-  //   Prefixo: '/resultados',
-  //   UrlDebug: '',
-  // };
-
-  // private _Resultados: any;
   private _resultados: any;
   private _equipes: any;
 
   constructor(
     private _auth: AuthService,
-    private _rest: RestClientService,
-    private _toastr: ToastrService
+    private _rest: RestClientService
   ) {
     this._rest.get(this._configResultados).subscribe(resultados => {
       this._resultados = resultados.data;
@@ -48,10 +37,6 @@ export class ResultadosComponent implements OnInit {
     this._rest.get(this._configEquipes).subscribe(resultados => {
       this._equipes = resultados.data;
     });
-    // const segmentoResultados = `/usuario/${this._auth.usuarioEmail}`;
-    // this._rest.get(this._configResultados, segmentoResultados).subscribe(resultados => {
-    //   this._resultados = resultados.data;
-    // });
   }
 
   ngOnInit() {
@@ -112,7 +97,7 @@ export class ResultadosComponent implements OnInit {
       case 'Sweden': return 'Suécia';
       case 'Korea Republic': return 'Coreia do Sul';
       case 'Belgium': return 'Bélgica';
-      case 'Panama': return 'Paranamá';
+      case 'Panama': return 'Panamá';
       case 'Tunisia': return 'Tunísia';
       case 'England': return 'Inglaterra';
       case 'Colombia': return 'Colômbia';
@@ -134,6 +119,7 @@ export class ResultadosComponent implements OnInit {
       }
     }
   }
+
   getVisualizacaoVencedor(golsFavor: number, golsContra: number) {
     if (golsFavor === null) {
       return '';

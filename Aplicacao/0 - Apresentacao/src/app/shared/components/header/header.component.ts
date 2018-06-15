@@ -2,7 +2,7 @@ import { AuthService } from './../../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 declare var nowuiKit: any;
 declare var $: any;
-declare var scroll_distance: any;
+// declare var scroll_distance: any;
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    scroll_distance = $('.navbar[color-on-scroll]').attr('color-on-scroll');
+    // scroll_distance = $('.navbar[color-on-scroll]').attr('color-on-scroll');
     nowuiKit.checkScrollForTransparentNavbar();
     $(window).on('scroll', nowuiKit.checkScrollForTransparentNavbar);
   }
