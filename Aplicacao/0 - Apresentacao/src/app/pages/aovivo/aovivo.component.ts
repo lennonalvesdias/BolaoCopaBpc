@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ApiConfig } from '../../shared/models/api-config.interface';
 import { RestClientService } from '../../shared/services/rest-client.service';
 import { timer } from 'rxjs/observable/timer';
 import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 declare var md5;
 
@@ -12,8 +13,9 @@ declare var md5;
   templateUrl: './aovivo.component.html',
   styleUrls: ['./aovivo.component.scss']
 })
-export class AovivoComponent implements OnInit {
+export class AovivoComponent implements OnInit, OnDestroy {
 
+  private _resultadoSubscription: Subscription;
   private _intervalo = timer(0, 50000);
 
   private _configResultados: ApiConfig = {
@@ -25,12 +27,6 @@ export class AovivoComponent implements OnInit {
   private _configEquipes: ApiConfig = {
     Debug: false,
     Prefixo: '/equipes',
-    UrlDebug: '',
-  };
-
-  private _configUsuarios: ApiConfig = {
-    Debug: false,
-    Prefixo: '/usuarios',
     UrlDebug: '',
   };
 
@@ -64,7 +60,7 @@ export class AovivoComponent implements OnInit {
 
   private refreshJogo() {
     const resultado = this._intervalo.pipe(switchMap(() => this._rest.get(this._configResultados, '/aovivo')));
-    resultado.subscribe(aoVivo => this._resultado = aoVivo.data);
+    this._resultadoSubscription = resultado.subscribe(aoVivo => this._resultado = aoVivo.data);
   }
 
   getImagemEquipe(equipeBusca) {
@@ -122,6 +118,10 @@ export class AovivoComponent implements OnInit {
 
   getImagemUsuario(email) {
     return `https://www.gravatar.com/avatar/${md5(email)}`;
+  }
+
+  ngOnDestroy() {
+    this._resultadoSubscription.unsubscribe();
   }
 
 }
