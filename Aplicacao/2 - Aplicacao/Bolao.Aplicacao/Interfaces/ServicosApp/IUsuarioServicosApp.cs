@@ -7,5 +7,6 @@ namespace Bolao.Aplicacao.Interfaces.ServicosApp
     {
         object Login(UsuarioLoginViewModel viewModel, Login login, Token token);
         void NovaSenha(UsuarioNovaSenhaViewModel viewModel);
+        string Gravatar(string email, string tamanho);
     }
 }

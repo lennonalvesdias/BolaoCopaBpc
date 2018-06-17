@@ -1,0 +1,120 @@
+<div class="wrapper">
+  <div class="page-header page-header-small">
+    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/aovivo.jpg');">
+    </div>
+    <div class="container">
+      <div class="content-center">
+        <h1 class="title">Tái o que você queria,
+          <br/>bola rolando...</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-about-us">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="title">Acerte o seu ai que eu arredondo o meu aqui.</h2>
+        <h5 class="description">Atenção: Esta página se atualiza a si mesma automaticamente. Bu!</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <ng-container *ngIf="!resultado || !equipes">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">
+            <i class="now-ui-icons loader_refresh spin"></i>
+          </h2>
+          <h5 class="description">Procurando por algum jogo ao vivo, vai jogando um Play enquanto isso...</h5>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="resultado && equipes">
+      <ng-container *ngIf="resultado.jogo.result.goalsHomeTeam !== null && resultado.jogo.result.goalsAwayTeam !== null">
+        <div class="row col-sm-10 ml-auto mr-auto no-space-sm" *ngIf="resultado.jogo.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
+          <div class="col-xs-line col-xs-left col-sm-0-5 col-md-1 ml-auto mr-auto">
+            <img [src]="getImagemEquipe(resultado.jogo._links.homeTeam.href)">
+          </div>
+
+          <div class="col-xs-line col-xs-right col-sm-2 ml-auto mr-auto text-center">
+            <h5>{{ traduzirNomeEquipe(resultado.jogo.homeTeamName) }}</h5>
+          </div>
+          <div class="col-sm-3 col-md-2 ml-auto mr-auto">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="far fa-futbol transparent"></i>
+              </span>
+              <input type="string" disabled class="form-control transparent" [value]="resultado.jogo.result.goalsHomeTeam">
+            </div>
+          </div>
+
+          <div class="col-sm-0-5 col-md-1 ml-auto mr-auto text-center">
+            <h5>x</h5>
+          </div>
+
+          <div class="col-sm-3 col-md-2 ml-auto mr-auto">
+            <div class="input-group">
+              <input class="form-control transparent" disabled type="text" [value]="resultado.jogo.result.goalsAwayTeam">
+              <span class="input-group-addon">
+                <i class="far fa-futbol transparent"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-xs-line col-xs-left ml-auto mr-auto visible-xs">
+            <img [src]="getImagemEquipe(resultado.jogo._links.awayTeam.href)">
+          </div>
+
+          <div class="col-xs-line col-xs-right col-sm-2 ml-auto mr-auto text-center">
+            <h5> {{ traduzirNomeEquipe(resultado.jogo.awayTeamName) }} </h5>
+          </div>
+
+          <div class="col-sm-0-5 col-md-1 ml-auto mr-auto hidden-xs">
+            <img [src]="getImagemEquipe(resultado.jogo._links.awayTeam.href)">
+          </div>
+        </div>
+
+        <ng-container *ngFor="let palpite of resultado.palpites">
+          <div class="row col-sm-10 ml-auto mr-auto no-space-sm" *ngIf="resultado.jogo.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
+            <div class="col-xs-line col-xs-left col-sm-0-1 col-md-1 ml-auto mr-auto">
+              <img class="rounded-circle" [src]="getImagemUsuario(palpite.email)">
+            </div>
+
+            <div class="col-xs-line col-xs-right col-sm-4 ml-auto mr-auto text-center">
+              <p class="text-muted">{{ palpite.email }}</p>
+            </div>
+
+            <div class="col-sm-3 col-md-2 ml-auto mr-auto">
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="far fa-futbol transparent"></i>
+                </span>
+                <input type="string" disabled class="form-control transparent" [value]="palpite.mandantePlacar">
+              </div>
+            </div>
+
+            <div class="col-sm-0-5 col-md-1 ml-auto mr-auto text-center">
+              <h5>x</h5>
+            </div>
+
+            <div class="col-sm-3 col-md-2 ml-auto mr-auto">
+              <div class="input-group">
+                <input class="form-control transparent" disabled type="text" [value]="palpite.visitantePlacar">
+                <span class="input-group-addon">
+                  <i class="far fa-futbol transparent"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <h5 class="description">Attention please! Temos um total de 21 participantes porem apenas 20 pagantes.</h5>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

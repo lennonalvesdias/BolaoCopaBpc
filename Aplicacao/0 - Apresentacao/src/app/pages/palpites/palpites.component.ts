@@ -170,14 +170,4 @@ export class PalpitesComponent implements OnInit {
     }
   }
 
-  temPalpite(codigoMandante, codigoVisitante) {
-    // tslint:disable-next-line:max-line-length
-    const palpiteDoJogo = this._palpites.filter(x => x.mandanteTime.toString() === codigoMandante && x.visitanteTime.toString() === codigoVisitante);
-    if (palpiteDoJogo[0]) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
 }

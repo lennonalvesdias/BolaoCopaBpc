@@ -16,6 +16,7 @@ import { LoginModule } from './login/login.module';
 import { PalpitesModule } from './palpites/palpites.module';
 import { ResultadosModule } from './resultados/resultados.module';
 import { AuditoriaModule } from './auditoria/auditoria.module';
+import { AovivoModule } from './aovivo/aovivo.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { AuditoriaModule } from './auditoria/auditoria.module';
     LoginModule,
     PalpitesModule,
     ResultadosModule,
-    AuditoriaModule
+    AuditoriaModule,
+    AovivoModule
   ],
   declarations: [LayoutDefault],
   providers: [

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiConfig } from '../../shared/models/api-config.interface';
 import { RestClientService } from '../../shared/services/rest-client.service';
-import { AuthService } from '../../shared/auth/auth.service';
 
 @Component({
   selector: 'app-resultados',
@@ -27,10 +26,9 @@ export class ResultadosComponent implements OnInit {
   private _equipes: any;
 
   constructor(
-    private _auth: AuthService,
     private _rest: RestClientService
   ) {
-    this._rest.get(this._configResultados).subscribe(resultados => {
+    this._rest.get(this._configResultados, '/finalizados').subscribe(resultados => {
       this._resultados = resultados.data;
     });
 
@@ -63,11 +61,6 @@ export class ResultadosComponent implements OnInit {
       }
     });
     return enderecoImagem;
-  }
-
-  getCodigoEquipe(equipeHref) {
-    const lastIndexOfSearch = equipeHref.lastIndexOf('/');
-    return equipeHref.substring(lastIndexOfSearch + 1, equipeHref.length);
   }
 
   traduzirNomeEquipe(nome) {
@@ -105,18 +98,6 @@ export class ResultadosComponent implements OnInit {
       case 'Poland': return 'Polônia';
       case 'Senegal': return 'Senegal';
       default: return 'Erro';
-    }
-  }
-
-  getPalpiteJogo(codigoMandante: number, codigoVisitante: number, placarDoMandante: boolean) {
-    // tslint:disable-next-line:max-line-length
-    const palpiteDoJogo = this._resultados.filter(x => x.mandanteTime.toString() === codigoMandante && x.visitanteTime.toString() === codigoVisitante);
-    if (palpiteDoJogo[0]) {
-      if (placarDoMandante === true) {
-        return palpiteDoJogo[0].mandantePlacar;
-      } else {
-        return palpiteDoJogo[0].visitantePlacar;
-      }
     }
   }
 

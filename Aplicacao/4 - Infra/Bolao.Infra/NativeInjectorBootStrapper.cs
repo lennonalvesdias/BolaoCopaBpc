@@ -29,6 +29,7 @@ namespace Bolao.Infra
             services.AddScoped<IAuditoriaServicosApp, AuditoriaServicosApp>();
 
             services.AddScoped<IFootballDataServicosExternos, FootballDataServicosExternos>();
+            services.AddScoped<IGravatarServicosExternos, GravatarServicosExternos>();
 
             // Dominio
             services.AddScoped<IUsuarioServicos, UsuarioServicos>();

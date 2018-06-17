@@ -21,6 +21,9 @@ const routes: Routes = [
       },
       {
         path: 'auditoria', loadChildren: './auditoria/auditoria.module#AuditoriaModule'
+      },
+      {
+        path: 'aovivo', loadChildren: './aovivo/aovivo.module#AovivoModule'
       }
     ]
   },
