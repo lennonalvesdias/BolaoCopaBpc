@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using RecursosCompartilhados.Aplicacao.Interfaces.ServicosExternos;
+using RestSharp;
 using RestSharp.Authenticators;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +7,10 @@ using System.Net;
 
 namespace RecursosCompartilhados.Aplicacao.ServicosExternos
 {
-    public class RestSharpClient
+    public class RestSharpClient : IRestSharpClient
     {
-        public static IRestResponse PostAsync(string url, string resource, object body,
-            Dictionary<string, string> headers = null, Dictionary<string, string> simpleAuthentication = null, bool security = false,
+        public IRestResponse PostAsync(string url, string resource, object body,
+            IDictionary<string, string> headers = null, IDictionary<string, string> simpleAuthentication = null, bool security = false,
             BodyType bodyType = BodyType.ApplicationJson)
         {
             /*switch (strategy)
@@ -84,8 +85,8 @@ namespace RecursosCompartilhados.Aplicacao.ServicosExternos
             return client.Execute(request);
         }
 
-        public static IRestResponse Get(string url, string resource, Dictionary<string, string> parameters = null,
-            Dictionary<string, string> headers = null, Dictionary<string, string> simpleAuthentication = null, bool security = false,
+        public IRestResponse Get(string url, string resource, IDictionary<string, string> parameters = null,
+            IDictionary<string, string> headers = null, IDictionary<string, string> simpleAuthentication = null, bool security = false,
             ParameterType parameterType = ParameterType.UrlSegment)
         {
             if (security)

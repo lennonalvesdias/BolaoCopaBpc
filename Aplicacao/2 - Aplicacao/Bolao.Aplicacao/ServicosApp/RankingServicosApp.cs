@@ -91,7 +91,7 @@ namespace Bolao.Aplicacao.ServicosApp
                 rankingGeral.Add(ranking);
             }
 
-            return rankingGeral.OrderByDescending(x => x.Pontos).ToList();
+            return rankingGeral.OrderByDescending(x => x.Pontos).ThenBy(x => x.Usuario.Apelido).ToList();
         }
     }
 }

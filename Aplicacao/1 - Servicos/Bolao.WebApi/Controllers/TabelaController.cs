@@ -1,6 +1,5 @@
 ﻿using Bolao.Aplicacao.Interfaces.ServicosApp;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecursosCompartilhados.Dominio.Entidades;
 using RecursosCompartilhados.WebApi.Controllers;
@@ -16,7 +15,6 @@ namespace Bolao.WebApi.Controllers
             _servicosApp = servicosApp;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("tabela")]
         public IActionResult Get()

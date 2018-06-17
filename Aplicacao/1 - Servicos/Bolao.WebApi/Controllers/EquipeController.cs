@@ -1,6 +1,5 @@
 ﻿using Bolao.Aplicacao.Interfaces.ServicosApp;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RecursosCompartilhados.Dominio.Entidades;
 using RecursosCompartilhados.WebApi.Controllers;
@@ -16,7 +15,6 @@ namespace Bolao.WebApi.Controllers
             _servicosApp = servicosApp;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("equipes")]
         public IActionResult Get()
@@ -24,7 +22,6 @@ namespace Bolao.WebApi.Controllers
             return Response(_servicosApp.Listar());
         }
 
-        [AllowAnonymous]
         [HttpGet]
         [Route("equipes/{codigoEquipe:int}")]
         public IActionResult Get(int codigoEquipe)

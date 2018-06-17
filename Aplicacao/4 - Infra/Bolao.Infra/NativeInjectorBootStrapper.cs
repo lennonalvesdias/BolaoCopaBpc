@@ -1,6 +1,8 @@
 using AutoMapper;
 using Bolao.Aplicacao.Interfaces.ServicosApp;
+using Bolao.Aplicacao.Interfaces.ServicosExternos;
 using Bolao.Aplicacao.ServicosApp;
+using Bolao.Aplicacao.ServicosExternos;
 using Bolao.Dados.Contexto;
 using Bolao.Dados.Repositorios;
 using Bolao.Dominio.Interfaces.Repositorios;
@@ -25,6 +27,8 @@ namespace Bolao.Infra
             services.AddScoped<IResultadoServicosApp, ResultadoServicosApp>();
             services.AddScoped<ITabelaServicosApp, TabelaServicosApp>();
             services.AddScoped<IAuditoriaServicosApp, AuditoriaServicosApp>();
+
+            services.AddScoped<IFootballDataServicosExternos, FootballDataServicosExternos>();
 
             // Dominio
             services.AddScoped<IUsuarioServicos, UsuarioServicos>();
