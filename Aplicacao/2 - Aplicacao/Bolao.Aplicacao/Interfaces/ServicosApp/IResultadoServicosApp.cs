@@ -6,7 +6,7 @@ namespace Bolao.Aplicacao.Interfaces.ServicosApp
     public interface IResultadoServicosApp
     {
         IList<FixtureViewModel> Listar();
-        FixtureViewModel AoVivo();
+        AoVivoViewModel AoVivo();
         IList<FixtureViewModel> Finalizados();
     }
 }

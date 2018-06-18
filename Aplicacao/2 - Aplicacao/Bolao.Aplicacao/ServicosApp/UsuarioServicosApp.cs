@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Text;
 using AutoMapper;
 using Bolao.Aplicacao.Interfaces.ServicosApp;
+using Bolao.Aplicacao.Interfaces.ServicosExternos;
 using Bolao.Aplicacao.ViewModels;
 using Bolao.Dominio.Entidades;
 using Bolao.Dominio.Interfaces.Servicos;
@@ -20,11 +21,13 @@ namespace Bolao.Aplicacao.ServicosApp
     {
         private readonly GerenciadorDeNotificacoes _notificacoes;
         private readonly IUsuarioServicos _servicos;
+        private readonly IGravatarServicosExternos _gravatarServicosExternos;
         private readonly IMapper _mapper;
 
-        public UsuarioServicosApp(IUsuarioServicos servicos, IMapper mapper, INotificationHandler<NotificacaoDeDominio> notificacoes)
+        public UsuarioServicosApp(IUsuarioServicos servicos, IGravatarServicosExternos gravatarServicosExternos, IMapper mapper, INotificationHandler<NotificacaoDeDominio> notificacoes)
         {
             _servicos = servicos;
+            _gravatarServicosExternos = gravatarServicosExternos;
             _mapper = mapper;
             _notificacoes = (GerenciadorDeNotificacoes)notificacoes;
         }
@@ -192,6 +195,11 @@ namespace Bolao.Aplicacao.ServicosApp
 
             var usuario = _mapper.Map<Usuario>(usuarioSend);
             _servicos.Atualizar(usuario);
+        }
+
+        public string Gravatar(string email, string tamanho)
+        {
+            return _gravatarServicosExternos.Avatar(CalculaHash(email), tamanho);
         }
     }
 }

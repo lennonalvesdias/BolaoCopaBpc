@@ -17,6 +17,7 @@ import { PalpitesModule } from './palpites/palpites.module';
 import { ResultadosModule } from './resultados/resultados.module';
 import { AuditoriaModule } from './auditoria/auditoria.module';
 import { RankingModule } from './ranking/ranking.module';
+import { AovivoModule } from './aovivo/aovivo.module';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { RankingModule } from './ranking/ranking.module';
     PalpitesModule,
     ResultadosModule,
     AuditoriaModule,
-    RankingModule
+    RankingModule,
+    AovivoModule
   ],
   declarations: [LayoutDefault],
   providers: [

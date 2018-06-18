@@ -24,6 +24,9 @@ const routes: Routes = [
       },
       {
         path: 'ranking', loadChildren: './ranking/ranking.module#RankingModule'
+      },
+      {
+        path: 'aovivo', loadChildren: './aovivo/aovivo.module#AovivoModule'
       }
     ]
   },

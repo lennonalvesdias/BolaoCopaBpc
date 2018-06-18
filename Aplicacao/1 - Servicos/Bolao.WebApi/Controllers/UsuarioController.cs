@@ -100,5 +100,12 @@ namespace Bolao.WebApi.Controllers
 
             return Response(vm);
         }
+
+        [HttpGet]
+        [Route("usuarios/gravatar/{email}/{tamanho?}")]
+        public IActionResult Gravatar(string email, string tamanho)
+        {
+            return Response(_servicosApp.Gravatar(email, tamanho));
+        }
     }
 }
