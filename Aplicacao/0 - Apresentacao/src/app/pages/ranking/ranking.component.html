@@ -4,7 +4,7 @@
     </div>
     <div class="container">
       <div class="content-center">
-        <h1 class="title">Ripa na chulipa e 
+        <h1 class="title">Ripa na chulipa e
           <br/>pimba na gorduchinha!</h1>
       </div>
     </div>
@@ -35,26 +35,25 @@
           <div class="col-md-12 ml-auto mr-auto text-center ranking-first-place" *ngIf="index == 0">
             <div class="img-container">
               <img src="../../../assets/img/cartao-amarelo.png" />
-              <div>{{ resultado.usuario.nome }}</div>
+              <div class="ranking-score">{{ resultado.pontos }}</div>
+              <div class="ranking-name">{{ resultado.usuario.nome }}</div>
             </div>
-            <div>{{ resultado.usuario.nome }}</div>
-            <div>{{ resultado.pontos }} pontos</div>
           </div>
 
-          <div class="col-md-3 ml-auto mr-auto text-center ranking-others" *ngIf="index > 0 && index < resultados.length - 4">
+          <div class="col-md-3 col-1180-4 col-910-6 col-635-12 ml-auto mr-auto text-center ranking-others" *ngIf="index > 0 && index < resultados.length - 4">
             <div class="img-container">
               <img [src]="getGravatarLink(resultado.usuario.email)" />
+              <div class="ranking-score">{{ resultado.pontos }}</div>
+              <div class="ranking-name">{{ resultado.usuario.nome }}</div>
             </div>
-            <div>{{ resultado.usuario.nome }}</div>
-            <div>{{ resultado.pontos }} pontos</div>
           </div>
 
-          <div class="col-md-3 ml-auto mr-auto text-center ranking-last-places" *ngIf="index >= resultados.length - 4">
+          <div class="col-md-3 col-1180-4 col-910-6 col-635-12 ml-auto mr-auto text-center ranking-last-places" *ngIf="index >= resultados.length - 4">
             <div class="img-container">
               <img [src]="getGravatarLink(resultado.usuario.email)" />
+              <div class="ranking-score">{{ resultado.pontos }}</div>
+              <div class="ranking-name">{{ resultado.usuario.nome }}</div>
             </div>
-            <div>{{ resultado.usuario.nome }}</div>
-            <div>{{ resultado.pontos }} pontos</div>
           </div>
         </ng-container>
       </div>
