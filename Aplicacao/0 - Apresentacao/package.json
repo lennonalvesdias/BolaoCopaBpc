@@ -26,6 +26,7 @@
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.0",
     "sweetalert2": "^7.22.2",
+    "ts-md5": "^1.2.4",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

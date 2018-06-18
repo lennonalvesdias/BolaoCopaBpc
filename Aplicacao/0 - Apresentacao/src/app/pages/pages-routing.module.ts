@@ -21,6 +21,9 @@ const routes: Routes = [
       },
       {
         path: 'auditoria', loadChildren: './auditoria/auditoria.module#AuditoriaModule'
+      },
+      {
+        path: 'ranking', loadChildren: './ranking/ranking.module#RankingModule'
       }
     ]
   },
