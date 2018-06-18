@@ -36,6 +36,6 @@ export class RankingComponent implements OnInit {
 
   getGravatarLink (email: string) {
     // tslint:disable-next-line:max-line-length
-    return 'http://www.gravatar.com/avatar/' +  Md5.hashStr(email) + '?s=250&d=http%3A%2F%2F104.225.220.166%3A1994%2Fassets%2Fimg%2Fcartao-amarelo.png' ;
+    return 'http://www.gravatar.com/avatar/' +  Md5.hashStr(email) + '?s=250&d=404' ;
   }
 }

@@ -34,7 +34,7 @@
         <ng-container *ngFor="let resultado of resultados; let index = index">
           <div class="col-md-12 ml-auto mr-auto text-center ranking-first-place" *ngIf="index == 0">
             <div class="img-container">
-              <img src="../../../assets/img/cartao-amarelo.png" />
+              <img [src]="getGravatarLink(resultado.usuario.email)" onError="this.src='./assets/img/cartao-amarelo.png';" />
               <div class="ranking-score">{{ resultado.pontos }}</div>
               <div class="ranking-name">{{ resultado.usuario.nome }}</div>
             </div>
@@ -42,7 +42,7 @@
 
           <div class="col-md-3 col-1180-4 col-910-6 col-635-12 ml-auto mr-auto text-center ranking-others" *ngIf="index > 0 && index < resultados.length - 4">
             <div class="img-container">
-              <img [src]="getGravatarLink(resultado.usuario.email)" />
+              <img [src]="getGravatarLink(resultado.usuario.email)" onError="this.src='./assets/img/cartao-amarelo.png';"/>
               <div class="ranking-score">{{ resultado.pontos }}</div>
               <div class="ranking-name">{{ resultado.usuario.nome }}</div>
             </div>
@@ -50,7 +50,7 @@
 
           <div class="col-md-3 col-1180-4 col-910-6 col-635-12 ml-auto mr-auto text-center ranking-last-places" *ngIf="index >= resultados.length - 4">
             <div class="img-container">
-              <img [src]="getGravatarLink(resultado.usuario.email)" />
+              <img [src]="getGravatarLink(resultado.usuario.email)" onError="this.src='./assets/img/cartao-amarelo.png';"/>
               <div class="ranking-score">{{ resultado.pontos }}</div>
               <div class="ranking-name">{{ resultado.usuario.nome }}</div>
             </div>
