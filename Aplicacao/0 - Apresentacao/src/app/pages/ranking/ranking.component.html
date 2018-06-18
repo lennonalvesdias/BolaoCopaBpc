@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="page-header page-header-small">
+    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/resultados.jpg');">
+    </div>
+    <div class="container">
+      <div class="content-center">
+        <h1 class="title">Ripa na chulipa e 
+          <br/>pimba na gorduchinha!</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-about-us">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="title">Agora é fechar o caixão e beijar a viúva.</h2>
+        <h5 class="description">Confira os jogos já realizados e veja se você mandou bem.</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <ng-container *ngIf="!resultados">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+          <h2 class="title">
+            <i class="now-ui-icons loader_refresh spin"></i>
+          </h2>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="resultados">
+      <div class="row col-sm-10 ml-auto mr-auto no-space-sm" style="padding-top: 1em; padding-bottom: 1em">
+        <ng-container *ngFor="let resultado of resultados; let index = index">
+          <div class="col-md-12 ml-auto mr-auto text-center ranking-first-place" *ngIf="index == 0">
+            <div class="img-container">
+              <img src="../../../assets/img/cartao-amarelo.png" />
+              <div>{{ resultado.usuario.nome }}</div>
+            </div>
+            <div>{{ resultado.usuario.nome }}</div>
+            <div>{{ resultado.pontos }} pontos</div>
+          </div>
+
+          <div class="col-md-3 ml-auto mr-auto text-center ranking-others" *ngIf="index > 0 && index < resultados.length - 4">
+            <div class="img-container">
+              <img [src]="getGravatarLink(resultado.usuario.email)" />
+            </div>
+            <div>{{ resultado.usuario.nome }}</div>
+            <div>{{ resultado.pontos }} pontos</div>
+          </div>
+
+          <div class="col-md-3 ml-auto mr-auto text-center ranking-last-places" *ngIf="index >= resultados.length - 4">
+            <div class="img-container">
+              <img [src]="getGravatarLink(resultado.usuario.email)" />
+            </div>
+            <div>{{ resultado.usuario.nome }}</div>
+            <div>{{ resultado.pontos }} pontos</div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
