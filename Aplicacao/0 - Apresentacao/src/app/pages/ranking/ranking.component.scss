@@ -13,21 +13,13 @@
 }
 
 .ranking-first-place {
-  background-image: url('../../../assets/img/bottom-frame-full.png');
   margin-bottom: 35px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 250px 360px;
   height: 360px;
 }
 
 .ranking-others,
 .ranking-last-places {
-  background-image: url('../../../assets/img/bottom-frame-full.png');
   margin-bottom: 35px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 200px 290px;
   height: 290px;
 }
 
@@ -49,13 +41,14 @@
 .ranking-first-place .img-container {
   width: 250px;
   height: 250px;
-  padding: 9px;
+  padding: 7px;
 }
 
 .ranking-score, .ranking-name {
   color: #fff;
   font-size: 18px;
   font-weight: bold;
+  position: relative;
 }
 
 .ranking-first-place .ranking-score,
@@ -64,7 +57,6 @@
 }
 
 .ranking-score {
-  position: relative;
   width: 40%;
   margin: auto;
   margin-top: -15px;
@@ -75,6 +67,36 @@
 
 .ranking-name {
   margin-top: 10px;
+  z-index: 4;
+}
+
+.ranking-first-place:after {
+  background-image: url('../../../assets/img/bottom-frame-full.png');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-size: 251px 360px;
+  content: ' ';
+  height: 360px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.ranking-others:after,
+.ranking-last-places:after {
+  background-image: url('../../../assets/img/bottom-frame-full.png');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-size: 200px 290px;
+  content: ' ';
+  height: 290px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
 @media (max-width: 1124px) {
