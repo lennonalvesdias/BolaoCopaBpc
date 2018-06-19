@@ -4,6 +4,7 @@ import { RestClientService } from '../../shared/services/rest-client.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-auditoria',
@@ -43,12 +44,9 @@ export class AuditoriaComponent implements OnInit {
   constructor(
     private _rest: RestClientService,
     private _formBuilder: FormBuilder,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private _routerActive: ActivatedRoute
   ) {
-    this._formularioAuditoria = this._formBuilder.group({
-      email: ['', Validators.required]
-    });
-
     this._rest.get(this._configResultados).subscribe(resultados => {
       this._resultados = resultados.data;
     });
@@ -59,6 +57,15 @@ export class AuditoriaComponent implements OnInit {
   }
 
   ngOnInit() {
+    const queryEmail = this._routerActive.queryParams['_value'].email;
+
+    this._formularioAuditoria = this._formBuilder.group({
+      email: [queryEmail, Validators.required]
+    });
+
+    if (queryEmail) {
+      this.buscarPalpites();
+    }
   }
 
   get resultados() {

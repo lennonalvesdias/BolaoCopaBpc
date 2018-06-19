@@ -23,7 +23,8 @@ namespace Bolao.Aplicacao.ServicosApp
         {
             var resultados = JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures")).Fixtures;
             var resultadoAoVivo = resultados.FirstOrDefault(x => x.Status.ToUpper().Equals("IN_PLAY"));
-            var palpitesDoJogo = _palpitesServicosApp.ListarPorJogo(GetIdByHref(resultadoAoVivo.Links.HomeTeam.Href), GetIdByHref(resultadoAoVivo.Links.AwayTeam.Href)).OrderBy(x => x.Email).ToList();
+            if (resultadoAoVivo == null) return null;
+            var palpitesDoJogo = _palpitesServicosApp.ListarPorJogo(Helpers.GetIdByHref(resultadoAoVivo.Links.HomeTeam.Href), Helpers.GetIdByHref(resultadoAoVivo.Links.AwayTeam.Href)).OrderBy(x => x.Email).ToList();
             return new AoVivoViewModel { Jogo = resultadoAoVivo, Palpites = palpitesDoJogo };
         }
 
@@ -35,14 +36,8 @@ namespace Bolao.Aplicacao.ServicosApp
         public IList<FixtureViewModel> Finalizados()
         {
             var resultados = JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures")).Fixtures;
+            if (resultados == null) return null;
             return resultados.Where(x => x.Status.ToUpper().Equals("FINISHED")).ToList();
-        }
-
-        private int GetIdByHref(string href)
-        {
-            var lastIndexOfHref = href.LastIndexOf("/");
-            var codigo = href.Substring(lastIndexOfHref + 1, 3);
-            return Convert.ToInt32(codigo);
         }
     }
 }
