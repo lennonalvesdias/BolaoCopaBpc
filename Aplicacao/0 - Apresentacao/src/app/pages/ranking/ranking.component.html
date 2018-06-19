@@ -38,7 +38,7 @@
               <div class="ranking-score">{{ resultado.pontos }}</div>
               <a routerLink="/auditoria" [queryParams]="{'email': resultado.usuario.email}">
                 <div class="ranking-name">{{ strToArray(resultado.usuario.nome)[0] }}
-                  <br/>{{ strToArray(resultado.usuario.nome)[1] }}</div>
+                  <br/>{{ strToArray(resultado.usuario.nome)[strToArray(resultado.usuario.nome).length - 1] }}</div>
               </a>
             </div>
           </div>
@@ -51,7 +51,7 @@
               <div class="ranking-score">{{ resultado.pontos }}</div>
               <a routerLink="/auditoria" [queryParams]="{'email': resultado.usuario.email}">
                 <div class="ranking-name">{{ strToArray(resultado.usuario.nome)[0] }}
-                  <br/>{{ strToArray(resultado.usuario.nome)[1] }}</div>
+                  <br/>{{ strToArray(resultado.usuario.nome)[strToArray(resultado.usuario.nome).length - 1] }}</div>
               </a>
             </div>
           </div>
@@ -62,7 +62,7 @@
               <div class="ranking-score">{{ resultado.pontos }}</div>
               <a routerLink="/auditoria" [queryParams]="{'email': resultado.usuario.email}">
                 <div class="ranking-name">{{ strToArray(resultado.usuario.nome)[0] }}
-                  <br/>{{ strToArray(resultado.usuario.nome)[1] }}</div>
+                  <br/>{{ strToArray(resultado.usuario.nome)[strToArray(resultado.usuario.nome).length - 1] }}</div>
               </a>
             </div>
           </div>

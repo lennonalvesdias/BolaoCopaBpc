@@ -13,21 +13,12 @@
 }
 
 .ranking-first-place {
-<<<<<<< HEAD
-=======
-  background-image: url('../../../assets/img/bottom-frame-full-first.png');
->>>>>>> f0d093adf28ab854a42caa1a6fa9bcb0b660ac78
-  margin-bottom: 35px;
+  margin-bottom: 55px;
   height: 360px;
 }
 
-<<<<<<< HEAD
 .ranking-others,
 .ranking-last-places {
-=======
-.ranking-others {
-  background-image: url('../../../assets/img/bottom-frame-full.png');
->>>>>>> f0d093adf28ab854a42caa1a6fa9bcb0b660ac78
   margin-bottom: 35px;
   height: 290px;
 }
@@ -58,8 +49,9 @@
 
 .ranking-first-place .img-container {
   width: 250px;
-  height: 250px;
+  height: 100%;
   padding: 7px;
+  box-shadow: #be9728 0px 5px 50px;
 }
 
 .ranking-score, .ranking-name {
@@ -69,35 +61,33 @@
   position: relative;
 }
 
-.ranking-first-place .ranking-score,
-.ranking-first-place .ranking-name {
+.ranking-score {
+  width: 40%;
+  margin-left: 35px;
+  z-index: 2;
+  margin-top: -39px;
   font-size: 20px;
 }
 
-// .ranking-score {
-//   position: relative;
-//   width: 40%;
-//   margin: auto;
-//   margin-top: -15px;
-//   border-radius: 10px;
-//   background: #beb38b;;
-//   z-index: 2;
-// }
-
-.ranking-score {
-  width: 40%;
-  margin: 32px;
-  margin-top: 8px;
+.ranking-first-place .ranking-score {
+  margin-left: 45px;
   z-index: 2;
+  margin-top: -47px;
 }
 
 .ranking-name {
-  margin-top: 10px;
+  margin-top: 30px;
   z-index: 4;
+  font-size: 22px;
+}
+
+.ranking-first-place .ranking-name {
+  font-size: 25px;
+  margin-top: 35px;
 }
 
 .ranking-first-place:after {
-  background-image: url('../../../assets/img/bottom-frame-full.png');
+  background-image: url('../../../assets/img/bottom-frame-full-first.png');
   background-repeat: no-repeat;
   background-position-x: center;
   background-size: 251px 360px;
@@ -125,6 +115,10 @@
   z-index: 1;
 }
 
+.ranking-last-places:after {
+  background-image: url('../../../assets/img/bottom-frame-full-last.png');
+}
+
 @media (max-width: 1124px) {
   h5 {
     font-size: 2vw;
@@ -150,6 +144,32 @@
 
   .visible-xs {
     display: block;
+  }
+
+  .ranking-first-place {
+    margin-bottom: 35px;
+    height: 290px;
+  }
+  
+  .ranking-first-place .img-container {
+    width: 200px;
+    height: 200px;
+    padding: 7px;
+  }
+
+  .ranking-first-place .ranking-score {
+    margin-left: 35px;
+    margin-top: -39px;
+  }
+
+  .ranking-first-place .ranking-name {
+    margin-top: 30px;
+    font-size: 22px;
+  }
+
+  .ranking-first-place:after {
+    background-size: 200px 290px;
+    height: 290px;
   }
 }
 
