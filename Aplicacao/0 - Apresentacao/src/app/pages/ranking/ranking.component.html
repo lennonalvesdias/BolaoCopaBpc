@@ -45,8 +45,6 @@
 
           <div class="col-md-3 col-1180-4 col-910-6 col-635-12 ml-auto mr-auto text-center ranking-others" *ngIf="index > 0 && index < resultados.length - 4">
             <div class="img-container">
-              <!-- <img style="position: absolute; z-index: 2;" src="assets/img/bottom-frame-full-quad.png" />
-              <img style="position: absolute; z-index: 1;" [src]="getImagemUsuario(resultado.usuario.email)" onError="this.src='./assets/img/default-gravatar.png';" /> -->
               <img [src]="getImagemUsuario(resultado.usuario.email)" onError="this.src='./assets/img/default-gravatar.png';" />
               <div class="ranking-score">{{ resultado.pontos }}</div>
               <a routerLink="/auditoria" [queryParams]="{'email': resultado.usuario.email}">
