@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
 import { ApiConfig } from '../../shared/models/api-config.interface';
 import { RestClientService } from '../../shared/services/rest-client.service';
 import { timer } from 'rxjs/observable/timer';
@@ -16,7 +15,7 @@ declare var md5;
 export class AovivoComponent implements OnInit, OnDestroy {
 
   private _resultadoSubscription: Subscription;
-  private _intervalo = timer(0, 50000);
+  private _intervalo = timer(0, 300000);
 
   private _configResultados: ApiConfig = {
     Debug: false,

@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   atualizarRota() {
-    this._rota.navigate(['/palpites']);
+    this._rota.navigate(['/ranking']);
   }
 
   setToken(login: Login) {

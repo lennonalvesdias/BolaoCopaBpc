@@ -1,5 +1,6 @@
 ﻿using Bolao.Aplicacao.Interfaces.ServicosExternos;
 using RecursosCompartilhados.Aplicacao.Interfaces.ServicosExternos;
+using System;
 using System.Collections.Generic;
 
 namespace Bolao.Aplicacao.ServicosExternos
@@ -17,16 +18,23 @@ namespace Bolao.Aplicacao.ServicosExternos
 
         public string Avatar(string hash, string tamanho)
         {
-            var resource = $"/avatar/{hash}";
-            Dictionary<string, string> parametros = null;
-            if (tamanho != null)
+            try
             {
-                parametros = new Dictionary<string, string>
+                var resource = $"/avatar/{hash}";
+                Dictionary<string, string> parametros = null;
+                if (tamanho != null)
+                {
+                    parametros = new Dictionary<string, string>
                 {
                     { "s", tamanho }
                 };
+                }
+                return _restSharp.Get(_urlBase, resource, parametros).Content;
             }
-            return _restSharp.Get(_urlBase, resource, parametros).Content;
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

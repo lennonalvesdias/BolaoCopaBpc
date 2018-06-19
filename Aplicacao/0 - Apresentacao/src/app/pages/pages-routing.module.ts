@@ -5,7 +5,7 @@ import { AuthGuard } from '../shared/auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'palpites', pathMatch: 'full'
+    path: '', redirectTo: 'ranking', pathMatch: 'full'
   },
 
   {

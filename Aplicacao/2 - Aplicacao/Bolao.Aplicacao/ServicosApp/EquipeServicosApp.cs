@@ -25,20 +25,15 @@ namespace Bolao.Aplicacao.ServicosApp
         public TeamViewModel Buscar(string codigoEquipe)
         {
             var equipes = JsonConvert.DeserializeObject<TimesViewModel>(_footballData.Get("/v1/competitions/467/teams")).Teams;
+            if (equipes == null) return null;
             return equipes.FirstOrDefault(x => x.Code == codigoEquipe);
         }
 
         public TeamViewModel Buscar(int codigoEquipe)
         {
             var equipes = JsonConvert.DeserializeObject<TimesViewModel>(_footballData.Get("/v1/competitions/467/teams")).Teams;
-            return equipes.FirstOrDefault(x => GetIdByHref(x.Links.Self.Href) == codigoEquipe);
-        }
-
-        private int GetIdByHref(string href)
-        {
-            var lastIndexOfHref = href.LastIndexOf("/");
-            var codigo = href.Substring(lastIndexOfHref + 1, 3);
-            return Convert.ToInt32(codigo);
+            if (equipes == null) return null;
+            return equipes.FirstOrDefault(x => Helpers.GetIdByHref(x.Links.Self.Href) == codigoEquipe);
         }
     }
 }

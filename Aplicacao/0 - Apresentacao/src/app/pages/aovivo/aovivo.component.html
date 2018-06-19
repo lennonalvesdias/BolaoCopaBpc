@@ -78,7 +78,7 @@
         <ng-container *ngFor="let palpite of resultado.palpites">
           <div class="row col-sm-10 ml-auto mr-auto no-space-sm" *ngIf="resultado.jogo.homeTeamName" style="padding-top: 1em; padding-bottom: 1em">
             <div class="col-xs-line col-xs-left col-sm-0-1 col-md-1 ml-auto mr-auto">
-              <img class="rounded-circle" [src]="getImagemUsuario(palpite.email)">
+              <img class="rounded-circle" [src]="getImagemUsuario(palpite.email)" onError="this.src='./assets/img/default-gravatar.png';">
             </div>
 
             <div class="col-xs-line col-xs-right col-sm-4 ml-auto mr-auto text-center">
@@ -108,12 +108,6 @@
             </div>
           </div>
         </ng-container>
-
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto text-center">
-            <h5 class="description">Attention please! Temos um total de 21 participantes porém apenas 20 pagantes.</h5>
-          </div>
-        </div>
       </ng-container>
     </ng-container>
   </div>

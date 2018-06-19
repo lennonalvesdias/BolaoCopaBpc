@@ -1,5 +1,6 @@
 ﻿using Bolao.Aplicacao.Interfaces.ServicosExternos;
 using RecursosCompartilhados.Aplicacao.Interfaces.ServicosExternos;
+using System;
 using System.Collections.Generic;
 
 namespace Bolao.Aplicacao.ServicosExternos
@@ -16,9 +17,16 @@ namespace Bolao.Aplicacao.ServicosExternos
         }
 
         public string Get(string resource)
-        {            
-            var headers = new Dictionary<string, string> { { "X-Auth-Token", "5759e59c5cd44dfdbd72cfc074d8f8f2" } };
-            return _restSharp.Get(_urlBase, resource, headers: headers).Content;
+        {
+            try
+            {
+                var headers = new Dictionary<string, string> { { "X-Auth-Token", "5759e59c5cd44dfdbd72cfc074d8f8f2" } };
+                return _restSharp.Get(_urlBase, resource, headers: headers).Content;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

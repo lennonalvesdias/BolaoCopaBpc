@@ -13,7 +13,7 @@
 }
 
 .ranking-first-place {
-  background-image: url('../../../assets/img/bottom-frame-full.png');
+  background-image: url('../../../assets/img/bottom-frame-full-first.png');
   margin-bottom: 35px;
   background-repeat: no-repeat;
   background-position: center;
@@ -21,9 +21,17 @@
   height: 360px;
 }
 
-.ranking-others,
-.ranking-last-places {
+.ranking-others {
   background-image: url('../../../assets/img/bottom-frame-full.png');
+  margin-bottom: 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 200px 290px;
+  height: 290px;
+}
+
+.ranking-last-places {
+  background-image: url('../../../assets/img/bottom-frame-full-last.png');
   margin-bottom: 35px;
   background-repeat: no-repeat;
   background-position: center;
@@ -53,7 +61,7 @@
 }
 
 .ranking-score, .ranking-name {
-  color: #fff;
+  color: #4c4c4c;
   font-size: 18px;
   font-weight: bold;
 }
@@ -63,13 +71,21 @@
   font-size: 20px;
 }
 
+// .ranking-score {
+//   position: relative;
+//   width: 40%;
+//   margin: auto;
+//   margin-top: -15px;
+//   border-radius: 10px;
+//   background: #beb38b;;
+//   z-index: 2;
+// }
+
 .ranking-score {
   position: relative;
   width: 40%;
-  margin: auto;
-  margin-top: -15px;
-  border-radius: 10px;
-  background: #beb38b;;
+  margin: 32px;
+  margin-top: 8px;
   z-index: 2;
 }
 

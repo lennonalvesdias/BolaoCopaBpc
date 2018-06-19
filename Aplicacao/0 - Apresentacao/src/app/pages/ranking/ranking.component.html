@@ -1,11 +1,11 @@
 <div class="wrapper">
   <div class="page-header page-header-small">
-    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/resultados.jpg');">
+    <div class="page-header-image" data-parallax="true" style="background-image: url('assets/img/ranking.jpg');">
     </div>
     <div class="container">
       <div class="content-center">
-        <h1 class="title">Ripa na chulipa e
-          <br/>pimba na gorduchinha!</h1>
+        <h1 class="title">Agora eu 'se' consagro.
+          <br/>Agueeeenta coração!</h1>
       </div>
     </div>
   </div>
@@ -13,8 +13,8 @@
   <div class="section section-about-us">
     <div class="row">
       <div class="col-md-8 ml-auto mr-auto text-center">
-        <h2 class="title">Agora é fechar o caixão e beijar a viúva.</h2>
-        <h5 class="description">Confira os jogos já realizados e veja se você mandou bem.</h5>
+        <h2 class="title">Ganhar é bom, mas ganhar da Argentina é mais gostoso!</h2>
+        <h5 class="description">Olha o ranking ai... Quê que eu vou dizer lá em casa?</h5>
       </div>
     </div>
   </div>
@@ -34,25 +34,36 @@
         <ng-container *ngFor="let resultado of resultados; let index = index">
           <div class="col-md-12 ml-auto mr-auto text-center ranking-first-place" *ngIf="index == 0">
             <div class="img-container">
-              <img [src]="getGravatarLink(resultado.usuario.email)" onError="this.src='./assets/img/cartao-amarelo.png';" />
+              <img [src]="getImagemUsuario(resultado.usuario.email)" onError="this.src='./assets/img/default-gravatar.png';" />
               <div class="ranking-score">{{ resultado.pontos }}</div>
-              <div class="ranking-name">{{ resultado.usuario.nome }}</div>
+              <a routerLink="/auditoria" [queryParams]="{'email': resultado.usuario.email}">
+                <div class="ranking-name">{{ strToArray(resultado.usuario.nome)[0] }}
+                  <br/>{{ strToArray(resultado.usuario.nome)[1] }}</div>
+              </a>
             </div>
           </div>
 
           <div class="col-md-3 col-1180-4 col-910-6 col-635-12 ml-auto mr-auto text-center ranking-others" *ngIf="index > 0 && index < resultados.length - 4">
             <div class="img-container">
-              <img [src]="getGravatarLink(resultado.usuario.email)" onError="this.src='./assets/img/cartao-amarelo.png';"/>
+              <!-- <img style="position: absolute; z-index: 2;" src="assets/img/bottom-frame-full-quad.png" />
+              <img style="position: absolute; z-index: 1;" [src]="getImagemUsuario(resultado.usuario.email)" onError="this.src='./assets/img/default-gravatar.png';" /> -->
+              <img [src]="getImagemUsuario(resultado.usuario.email)" onError="this.src='./assets/img/default-gravatar.png';" />
               <div class="ranking-score">{{ resultado.pontos }}</div>
-              <div class="ranking-name">{{ resultado.usuario.nome }}</div>
+              <a routerLink="/auditoria" [queryParams]="{'email': resultado.usuario.email}">
+                <div class="ranking-name">{{ strToArray(resultado.usuario.nome)[0] }}
+                  <br/>{{ strToArray(resultado.usuario.nome)[1] }}</div>
+              </a>
             </div>
           </div>
 
           <div class="col-md-3 col-1180-4 col-910-6 col-635-12 ml-auto mr-auto text-center ranking-last-places" *ngIf="index >= resultados.length - 4">
             <div class="img-container">
-              <img [src]="getGravatarLink(resultado.usuario.email)" onError="this.src='./assets/img/cartao-amarelo.png';"/>
+              <img [src]="getImagemUsuario(resultado.usuario.email)" onError="this.src='./assets/img/default-gravatar.png';" />
               <div class="ranking-score">{{ resultado.pontos }}</div>
-              <div class="ranking-name">{{ resultado.usuario.nome }}</div>
+              <a routerLink="/auditoria" [queryParams]="{'email': resultado.usuario.email}">
+                <div class="ranking-name">{{ strToArray(resultado.usuario.nome)[0] }}
+                  <br/>{{ strToArray(resultado.usuario.nome)[1] }}</div>
+              </a>
             </div>
           </div>
         </ng-container>

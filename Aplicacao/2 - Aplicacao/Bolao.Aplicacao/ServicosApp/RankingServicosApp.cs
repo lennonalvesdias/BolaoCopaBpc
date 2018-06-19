@@ -27,6 +27,7 @@ namespace Bolao.Aplicacao.ServicosApp
         public List<RankingViewModel> Calcular()
         {
             var resultados = _resultadoServicosApp.Listar();
+            if (resultados == null) return null;
 
             var placar = new Dictionary<string, int>();
 
@@ -37,13 +38,8 @@ namespace Bolao.Aplicacao.ServicosApp
                 // 0 = MANDANTE // 1 = VISITANTE // 2 = EMPATE
                 var resultadoJogo = resultado.Result.GoalsHomeTeam > resultado.Result.GoalsAwayTeam ? 0 : resultado.Result.GoalsHomeTeam < resultado.Result.GoalsAwayTeam ? 1 : 2;
 
-                var mandanteTime = resultado.Links.HomeTeam.Href;
-                var lastIndexMandante = mandanteTime.LastIndexOf("/");
-                var mandanteCodigo = mandanteTime.Substring(lastIndexMandante + 1, 3);
-
-                var visitanteTime = resultado.Links.AwayTeam.Href;
-                var lastIndexVisitante = visitanteTime.LastIndexOf("/");
-                var visitanteCodigo = visitanteTime.Substring(lastIndexVisitante + 1, 3);
+                var mandanteCodigo = Helpers.GetIdByHref(resultado.Links.HomeTeam.Href);
+                var visitanteCodigo = Helpers.GetIdByHref(resultado.Links.AwayTeam.Href);
 
                 var palpitesJogo = _palpiteServicos.ListarPorJogo((Equipe.Selecao)Convert.ToInt32(mandanteCodigo), (Equipe.Selecao)Convert.ToInt32(visitanteCodigo));
                 foreach (var palpite in palpitesJogo)
