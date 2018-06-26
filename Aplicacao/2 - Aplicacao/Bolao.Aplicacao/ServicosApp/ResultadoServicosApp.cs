@@ -19,13 +19,19 @@ namespace Bolao.Aplicacao.ServicosApp
             _palpitesServicosApp = palpitesServicosApp;
         }
 
-        public AoVivoViewModel AoVivo()
+        public IList<AoVivoViewModel> AoVivo()
         {
             var resultados = JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures")).Fixtures;
-            var resultadoAoVivo = resultados.FirstOrDefault(x => x.Status.ToUpper().Equals("IN_PLAY"));
-            if (resultadoAoVivo == null) return null;
-            var palpitesDoJogo = _palpitesServicosApp.ListarPorJogo(Helpers.GetIdByHref(resultadoAoVivo.Links.HomeTeam.Href), Helpers.GetIdByHref(resultadoAoVivo.Links.AwayTeam.Href)).OrderBy(x => x.Email).ToList();
-            return new AoVivoViewModel { Jogo = resultadoAoVivo, Palpites = palpitesDoJogo };
+            var resultadosAoVivo = resultados.Where(x => x.Status.ToUpper().Equals("IN_PLAY"));
+            if (!resultadosAoVivo.Any()) return null;
+            var jogos = new List<AoVivoViewModel>();
+            foreach (var resultado in resultadosAoVivo)
+            {
+                var palpitesDoJogo = _palpitesServicosApp.ListarPorJogo(Helpers.GetIdByHref(resultado.Links.HomeTeam.Href), Helpers.GetIdByHref(resultado.Links.AwayTeam.Href)).OrderBy(x => x.Email).ToList();
+                var jogo = new AoVivoViewModel { Jogo = resultado, Palpites = palpitesDoJogo };
+                jogos.Add(jogo);
+            }
+            return jogos;
         }
 
         public IList<FixtureViewModel> Listar()

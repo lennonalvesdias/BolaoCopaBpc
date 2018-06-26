@@ -14,7 +14,7 @@ declare var md5;
 })
 export class AovivoComponent implements OnInit, OnDestroy {
 
-  private _resultadoSubscription: Subscription;
+  private _resultadosSubscription: Subscription;
   private _intervalo = timer(0, 300000);
 
   private _configResultados: ApiConfig = {
@@ -29,7 +29,7 @@ export class AovivoComponent implements OnInit, OnDestroy {
     UrlDebug: '',
   };
 
-  private _resultado: any;
+  private _resultados: any;
   private _equipes: any;
   private _loading = false;
 
@@ -45,8 +45,8 @@ export class AovivoComponent implements OnInit, OnDestroy {
     this.refreshJogo();
   }
 
-  get resultado() {
-    return this._resultado;
+  get resultados() {
+    return this._resultados;
   }
 
   get equipes() {
@@ -58,8 +58,8 @@ export class AovivoComponent implements OnInit, OnDestroy {
   }
 
   private refreshJogo() {
-    const resultado = this._intervalo.pipe(switchMap(() => this._rest.get(this._configResultados, '/aovivo')));
-    this._resultadoSubscription = resultado.subscribe(aoVivo => this._resultado = aoVivo.data);
+    const resultados = this._intervalo.pipe(switchMap(() => this._rest.get(this._configResultados, '/aovivo')));
+    this._resultadosSubscription = resultados.subscribe(aoVivo => this._resultados = aoVivo.data);
   }
 
   getImagemEquipe(equipeBusca) {
@@ -116,11 +116,11 @@ export class AovivoComponent implements OnInit, OnDestroy {
   }
 
   getImagemUsuario(email) {
-    return `https://www.gravatar.com/avatar/${md5(email)}`;
+    return `https://www.gravatar.com/avatar/${md5(email)}?d=404`;
   }
 
   ngOnDestroy() {
-    this._resultadoSubscription.unsubscribe();
+    this._resultadosSubscription.unsubscribe();
   }
 
 }
