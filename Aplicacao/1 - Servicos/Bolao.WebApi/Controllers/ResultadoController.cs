@@ -37,7 +37,7 @@ namespace Bolao.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("resultados/primerafase")]
+        [Route("resultados/primeirafase")]
         public IActionResult PrimeiraFase()
         {
             return Response(_servicosApp.PrimeiraFase());
