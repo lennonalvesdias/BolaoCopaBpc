@@ -47,7 +47,7 @@ export class AuditoriaComponent implements OnInit {
     private _toastr: ToastrService,
     private _routerActive: ActivatedRoute
   ) {
-    this._rest.get(this._configResultados).subscribe(resultados => {
+    this._rest.get(this._configResultados, '/primeirafase').subscribe(resultados => {
       this._resultados = resultados.data;
     });
 

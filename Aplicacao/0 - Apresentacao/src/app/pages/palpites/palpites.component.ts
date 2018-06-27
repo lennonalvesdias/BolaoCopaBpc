@@ -41,7 +41,7 @@ export class PalpitesComponent implements OnInit {
     private _rest: RestClientService,
     private _toastr: ToastrService
   ) {
-    this._rest.get(this._configResultados).subscribe(resultados => {
+    this._rest.get(this._configResultados, '/primeirafase').subscribe(resultados => {
       this._resultados = resultados.data;
     });
 
