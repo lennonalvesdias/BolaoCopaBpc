@@ -16,12 +16,12 @@ namespace Bolao.Aplicacao.ServicosExternos
             _restSharp = restSharp;
         }
 
-        public string Get(string resource)
+        public string Get(string resource, IDictionary<string, string> parameters = null)
         {
             try
             {
                 var headers = new Dictionary<string, string> { { "X-Auth-Token", "5759e59c5cd44dfdbd72cfc074d8f8f2" } };
-                return _restSharp.Get(_urlBase, resource, headers: headers).Content;
+                return _restSharp.Get(_urlBase, resource, headers: headers, parameters: parameters).Content;
             }
             catch (Exception ex)
             {

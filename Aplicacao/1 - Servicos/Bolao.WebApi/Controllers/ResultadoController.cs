@@ -35,5 +35,47 @@ namespace Bolao.WebApi.Controllers
         {
             return Response(_servicosApp.Finalizados());
         }
+
+        [HttpGet]
+        [Route("resultados/primerafase")]
+        public IActionResult PrimeiraFase()
+        {
+            return Response(_servicosApp.PrimeiraFase());
+        }
+
+        [HttpGet]
+        [Route("resultados/oitavas")]
+        public IActionResult Oitavas()
+        {
+            return Response(_servicosApp.Oitavas());
+        }
+
+        [HttpGet]
+        [Route("resultados/quartas")]
+        public IActionResult Quartas()
+        {
+            return Response(_servicosApp.Quartas());
+        }
+
+        [HttpGet]
+        [Route("resultados/seminifinal")]
+        public IActionResult Semifinal()
+        {
+            return Response(_servicosApp.Semifinal());
+        }
+
+        [HttpGet]
+        [Route("resultados/terceiroquarto")]
+        public IActionResult TerceiroQuarto()
+        {
+            return Response(_servicosApp.TerceiroQuarto());
+        }
+
+        [HttpGet]
+        [Route("resultados/final")]
+        public IActionResult Final()
+        {
+            return Response(_servicosApp.Final());
+        }
     }
 }

@@ -5,8 +5,14 @@ namespace Bolao.Aplicacao.Interfaces.ServicosApp
 {
     public interface IResultadoServicosApp
     {
-        IList<FixtureViewModel> Listar();
         IList<AoVivoViewModel> AoVivo();
+        IList<FixtureViewModel> Listar();
         IList<FixtureViewModel> Finalizados();
+        IList<FixtureViewModel> PrimeiraFase();
+        IList<FixtureViewModel> Oitavas();
+        IList<FixtureViewModel> Quartas();
+        IList<FixtureViewModel> Semifinal();
+        IList<FixtureViewModel> TerceiroQuarto();
+        IList<FixtureViewModel> Final();
     }
 }

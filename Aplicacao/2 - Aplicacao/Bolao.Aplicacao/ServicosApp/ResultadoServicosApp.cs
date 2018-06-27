@@ -2,7 +2,6 @@
 using Bolao.Aplicacao.Interfaces.ServicosExternos;
 using Bolao.Aplicacao.ViewModels;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,6 +43,43 @@ namespace Bolao.Aplicacao.ServicosApp
             var resultados = JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures")).Fixtures;
             if (resultados == null) return null;
             return resultados.Where(x => x.Status.ToUpper().Equals("FINISHED")).ToList();
+        }
+
+        public IList<FixtureViewModel> PrimeiraFase()
+        {
+            var resultados = JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures")).Fixtures;
+            if (resultados == null) return null;
+            return resultados.Where(x => x.Matchday == 1 || x.Matchday == 2 || x.Matchday == 3).ToList();
+        }
+
+        public IList<FixtureViewModel> Oitavas()
+        {
+            var parametros = new Dictionary<string, string> { { "matchday", "4" } };
+            return JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures", parametros)).Fixtures;
+        }
+
+        public IList<FixtureViewModel> Quartas()
+        {
+            var parametros = new Dictionary<string, string> { { "matchday", "5" } };
+            return JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures", parametros)).Fixtures;
+        }
+
+        public IList<FixtureViewModel> Semifinal()
+        {
+            var parametros = new Dictionary<string, string> { { "matchday", "6" } };
+            return JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures", parametros)).Fixtures;
+        }
+
+        public IList<FixtureViewModel> TerceiroQuarto()
+        {
+            var parametros = new Dictionary<string, string> { { "matchday", "7" } };
+            return JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures", parametros)).Fixtures;
+        }
+
+        public IList<FixtureViewModel> Final()
+        {
+            var parametros = new Dictionary<string, string> { { "matchday", "8" } };
+            return JsonConvert.DeserializeObject<ResultadoViewModel>(_footballData.Get("/v1/competitions/467/fixtures", parametros)).Fixtures;
         }
     }
 }
