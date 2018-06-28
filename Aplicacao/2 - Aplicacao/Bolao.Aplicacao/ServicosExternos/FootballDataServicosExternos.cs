@@ -7,7 +7,7 @@ namespace Bolao.Aplicacao.ServicosExternos
 {
     public class FootballDataServicosExternos : IFootballDataServicosExternos
     {
-        private readonly string _urlBase = "https://www.football-data.org";
+        private readonly string _urlBase = "https://api.football-data.org";
 
         private readonly IRestSharpClient _restSharp;
 
