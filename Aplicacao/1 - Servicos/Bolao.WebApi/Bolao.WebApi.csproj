@@ -13,15 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../../RecursosCompartilhados/1 - Servicos/RecursosCompartilhados.WebApi/RecursosCompartilhados.WebApi.csproj" />
-    <ProjectReference Include="../../../RecursosCompartilhados/2 - Aplicacao/RecursosCompartilhados.Aplicacao/RecursosCompartilhados.Aplicacao.csproj" />
-    <ProjectReference Include="../../../RecursosCompartilhados/4 - Infra/RecursosCompartilhados.Infra/RecursosCompartilhados.Infra.csproj" />
     <ProjectReference Include="..\..\2 - Aplicacao\Bolao.Aplicacao\Bolao.Aplicacao.csproj" />
     <ProjectReference Include="..\..\4 - Infra\Bolao.Dados\Bolao.Dados.csproj" />
     <ProjectReference Include="..\..\4 - Infra\Bolao.Infra\Bolao.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LA.RecursosCompartilhados.Infra" Version="1.0.0" />
+    <PackageReference Include="LA.RecursosCompartilhados.WebApi" Version="1.0.0" />
     <PackageReference Include="mongocsharpdriver" Version="2.5.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.6.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />

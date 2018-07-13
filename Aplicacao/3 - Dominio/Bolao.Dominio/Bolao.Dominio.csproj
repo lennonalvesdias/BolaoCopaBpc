@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../../RecursosCompartilhados/3 - Dominio/RecursosCompartilhados.Dominio/RecursosCompartilhados.Dominio.csproj" />
+    <PackageReference Include="LA.RecursosCompartilhados.Dominio" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
