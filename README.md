@@ -4,3 +4,5 @@
 
 Projeto modelo desenvolvido em .Net Core (usando MongoDB) e Angular 6.
 Para este projeto foi utilizada a abstração dos [Recursos Compartilhados](https://github.com/lennonalvesdias/RecursosCompartilhadosNetCoreMongoDB).
+
+Contribuições: Alexandre Costa e Mayara Miazaki
