@@ -5,14 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\2 - Aplicacao\Bolao.Aplicacao\Bolao.Aplicacao.csproj" />
-    <ProjectReference Include="..\..\3 - Dominio\Bolao.Dominio\Bolao.Dominio.csproj" />
-    <ProjectReference Include="..\Bolao.Dados\Bolao.Dados.csproj" />
+    <PackageReference Include="LA.RecursosCompartilhados.Infra" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+    <ProjectReference Include="..\..\2 - Aplicacao\Bolao.Aplicacao\Bolao.Aplicacao.csproj" />
+    <ProjectReference Include="..\..\3 - Dominio\Bolao.Dominio\Bolao.Dominio.csproj" />
+    <ProjectReference Include="..\Bolao.Dados\Bolao.Dados.csproj" />
   </ItemGroup>
 
 </Project>
